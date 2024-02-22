@@ -7,6 +7,10 @@
   </Placeholders>
   <Project Name="Metrology_NPL_3Ph4W" Type="Application">
     <Files>
+      <Category Name="doc">
+        <Path>doc\C14115_RENESAS_3-PHASE_PMOD_512K_V1.0_Schematics_07-11-23.pdf</Path>
+        <Path>doc\MDT0096A2IS-SPI_DISPLAY_MEZZANINE_V1.0_Schematics_07-11-23.pdf</Path>
+      </Category>
       <Category Name="src">
         <Category Name="rl78i1c">
           <Path>src\rl78i1c\main.c</Path>
@@ -194,51 +198,50 @@
         <CompileOptions>
           <Option>-cpu=S3</Option>
           <Option>-c</Option>
-          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
-          <Option>-I "${ProjDirPath}\src\shared"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\event"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\calibration"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\compiler\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\debug"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\eeprom"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper\metrology\filter"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\compiler\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL\incrl78"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\compiler"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\compiler"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\inst_read"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\debug\loadtest"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\startup"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\driver"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL\librl78"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\storage"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\dataflash"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper\metrology"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\appwrapper"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology"</Option>
-          <Option>-D FEATURES_WQFR,LPF_TEST,__DEBUG</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\eeprom"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology\filter"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\incrl78"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\inst_read"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug\loadtest"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\startup"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\driver"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\librl78"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\storage"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\dataflash"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\appwrapper"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology"</Option>
+          <Option>-D FEATURES_WQFR,METER_ENABLE_MEASURE_CPU_LOAD,__DEBUG</Option>
           <Option>-refs_without_declaration</Option>
           <Option>-character_set=utf8</Option>
           <Option>-g</Option>
           <Option>-o ${workspace_loc}\${ProjName}/${ConfigName}</Option>
-          <Option>-Onothing</Option>
           <Option>-merge_string</Option>
           <Option>-signed_char</Option>
           <Option>-lang=c</Option>
@@ -246,22 +249,22 @@
         <AssembleOptions>
           <Option>-cpu=S3</Option>
           <Option>-c</Option>
-          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
           <Option>-character_set=utf8</Option>
           <Option>-g</Option>
-          <Option>-o "${ProjDirPath}/${ConfigName}"</Option>
+          <Option>-o "${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/${ConfigName}"</Option>
         </AssembleOptions>
         <LinkOptions>
-          <Option>-device="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
-          <Option>-list=${ProjName}.map</Option>
+          <Option>-device="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-list</Option>
           <Option>-show=all</Option>
           <Option>-nooptimize</Option>
           <Option>-entry=_start</Option>
           <Option>-auto_section_layout</Option>
           <Option>-security_id=0</Option>
           <Option>-debug_monitor=7FE00-7FFFF</Option>
-          <Option>-user_opt_byte=7E7FE0</Option>
+          <Option>-user_opt_byte=7E3BE0</Option>
           <Option>-ocdbg=84</Option>
           <Option>-self</Option>
           <Option>-output="${ProjName}.abs"</Option>
@@ -275,11 +278,11 @@
           <Option>-total_size</Option>
           <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4s.lib"</Option>
           <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4r.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/flash/fdl/CCRL/librl78/pfdl.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/hpf16_rl78_s3_ccrl_m.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_1.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_2.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/metrologylibrary/CCRL/230518_EMP4W_WQFR.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/flash/fdl/CCRL/librl78/pfdl.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/hpf16_rl78_s3_ccrl_m.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_1.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_2.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/metrologylibrary/CCRL/230518_EMP4W_WQFR.lib"</Option>
           <Option>-end</Option>
           <Option>-output="${ProjName}.mot"</Option>
           <Option>-form=stype</Option>
@@ -349,45 +352,45 @@
           <Path>Debug_CT\src/rl78i1c\main.obj</Path>
         </LinkOrder>
         <CommonOptions>
-          <IncludePathForC>"${ProjDirPath}\src\shared"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\event"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\calibration"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\compiler\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\debug"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\eeprom"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper\metrology\filter"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\compiler\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL\incrl78"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\compiler"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\compiler"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\inst_read"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\debug\loadtest"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\startup"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\driver"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL\librl78"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\storage"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\dataflash"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper\metrology"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\appwrapper"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\eeprom"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology\filter"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\incrl78"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\inst_read"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug\loadtest"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\startup"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\driver"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\librl78"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\storage"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\dataflash"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\appwrapper"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology"</IncludePathForC>
           <MacroForC>FEATURES_WQFR</MacroForC>
-          <MacroForC>LPF_TEST</MacroForC>
+          <MacroForC>METER_ENABLE_MEASURE_CPU_LOAD</MacroForC>
           <MacroForC>__DEBUG</MacroForC>
         </CommonOptions>
       </BuildMode>
@@ -396,46 +399,46 @@
         <CompileOptions>
           <Option>-cpu=S3</Option>
           <Option>-c</Option>
-          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
-          <Option>-I "${ProjDirPath}\src\shared"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\event"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\calibration"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\compiler\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\debug"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\eeprom"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper\metrology\filter"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\compiler\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL\incrl78"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\compiler"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\compiler"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection\headers"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\inst_read"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\debug\loadtest"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\filter"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\dc_detection\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\startup"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\driver"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL\librl78"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\storage"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology\metrologylibrary\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\application\dataflash"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper\metrology"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\flash\fdl\CCRL"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\appwrapper"</Option>
-          <Option>-I "${ProjDirPath}\src\rl78i1c\libwrapper"</Option>
-          <Option>-I "${ProjDirPath}\src\shared\metrology"</Option>
-          <Option>-D FEATURES_WQUR,__DEBUG</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\eeprom"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology\filter"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\incrl78"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\headers"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\inst_read"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug\loadtest"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\startup"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\driver"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\librl78"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\storage"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\dataflash"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\appwrapper"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology"</Option>
+          <Option>-D FEATURES_WQFR,METER_ENABLE_MEASURE_CPU_LOAD,__DEBUG</Option>
           <Option>-refs_without_declaration</Option>
           <Option>-character_set=utf8</Option>
           <Option>-g</Option>
@@ -449,15 +452,15 @@
         <AssembleOptions>
           <Option>-cpu=S3</Option>
           <Option>-c</Option>
-          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
           <Option>-character_set=utf8</Option>
           <Option>-g</Option>
-          <Option>-o "${ProjDirPath}/${ConfigName}"</Option>
+          <Option>-o "${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/${ConfigName}"</Option>
         </AssembleOptions>
         <LinkOptions>
-          <Option>-device="C:/Users/a5126135/.eclipse/com.renesas.platform_1631769940/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
-          <Option>-list=${ProjName}.map</Option>
+          <Option>-device="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
+          <Option>-list</Option>
           <Option>-show=all</Option>
           <Option>-nooptimize</Option>
           <Option>-auto_section_layout</Option>
@@ -477,11 +480,11 @@
           <Option>-total_size</Option>
           <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4s.lib"</Option>
           <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4r.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/flash/fdl/CCRL/librl78/pfdl.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/hpf16_rl78_s3_ccrl_m.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_1.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_2.lib"</Option>
-          <Option>-library="${ProjDirPath}/src/shared/metrology/metrologylibrary/CCRL/230518_EMP4W_WQFR.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/flash/fdl/CCRL/librl78/pfdl.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/hpf16_rl78_s3_ccrl_m.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_1.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/r_dscl_iirbiquad_i32_2.lib"</Option>
+          <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/metrologylibrary/CCRL/230518_EMP4W_WQFR.lib"</Option>
           <Option>-end</Option>
           <Option>-output="${ProjName}.mot"</Option>
           <Option>-form=stype</Option>
@@ -551,44 +554,45 @@
           <Path>Release_CT\src/rl78i1c\main.obj</Path>
         </LinkOrder>
         <CommonOptions>
-          <IncludePathForC>"${ProjDirPath}\src\shared"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\event"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\calibration"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\compiler\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\debug"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\eeprom"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper\metrology\filter"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\compiler\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL\incrl78"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\compiler"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\compiler"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection\headers"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\inst_read"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\debug\loadtest"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\filter"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\dc_detection\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\startup"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\driver"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL\librl78"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\storage"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology\metrologylibrary\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\application\dataflash"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper\metrology"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\flash\fdl\CCRL"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\appwrapper"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\rl78i1c\libwrapper"</IncludePathForC>
-          <IncludePathForC>"${ProjDirPath}\src\shared\metrology"</IncludePathForC>
-          <MacroForC>FEATURES_WQUR</MacroForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\eeprom"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology\filter"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\incrl78"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\compiler"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\compiler"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\headers"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\inst_read"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\debug\loadtest"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\filter"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\dc_detection\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\startup"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\driver"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL\librl78"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\storage"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology\metrologylibrary\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\dataflash"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper\metrology"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\flash\fdl\CCRL"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\appwrapper"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\libwrapper"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared\metrology"</IncludePathForC>
+          <MacroForC>FEATURES_WQFR</MacroForC>
+          <MacroForC>METER_ENABLE_MEASURE_CPU_LOAD</MacroForC>
           <MacroForC>__DEBUG</MacroForC>
         </CommonOptions>
       </BuildMode>

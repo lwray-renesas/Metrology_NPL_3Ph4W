@@ -118,13 +118,6 @@ extern volatile uint16_t g_wrp_sample_count;
 extern int16_t  g_wrp_sample_int16[6][EM_ADC_MAX_DEBUG_SAMPLE];
 extern int32_t  g_wrp_sample_int32[4][EM_ADC_MAX_DEBUG_SAMPLE];
 
-#ifdef LPF_TEST
-extern int16_t  g_wrp_sample_vr_int16_lpf[EM_ADC_MAX_DEBUG_SAMPLE];
-extern volatile int32_t gradient;
-extern volatile int32_t gradient_count;
-extern volatile int32_t us_to_next_zc;
-#endif
-
 /******************************************************************************
 Exported global variables and functions (to be accessed by other files)
  ******************************************************************************/
@@ -2368,8 +2361,6 @@ static uint8_t COMMAND_InvokeDumpSample(uint8_t *arg_str)
 	uint16_t i;
 	uint8_t buffer[20];
 
-#ifndef METER_ENABLE_MEASURE_CPU_LOAD
-
 	CMD_Printf(
 			(uint8_t *)"\n\rWaiting for waveform to stabilise...\n\r"
 	);
@@ -2386,28 +2377,6 @@ static uint8_t COMMAND_InvokeDumpSample(uint8_t *arg_str)
 			(uint8_t *)"\n\rWaveform of voltage & current samples\n\r"
 	);
 
-#ifdef LPF_TEST
-
-	CMD_Printf(
-			(uint8_t *)"%ld, %ld, %ld\n\r",
-			gradient, gradient_count, us_to_next_zc
-	);
-
-	CMD_Printf(
-			(uint8_t *)"V1, V1-LPF, V1-90, V2, V2-90, V3, V3-90, I1, I2, I3, IN\n\r"
-	);
-
-	for (i = 0; i < g_wrp_sample_count; i++)
-	{
-		CMD_Printf((uint8_t *)"%d, %d, %d, %d, %d, %d, %d, %ld, %ld, %ld, %ld\n\r",
-				g_wrp_sample_int16[0][i], g_wrp_sample_vr_int16_lpf[i], g_wrp_sample_int16[3][i],
-				g_wrp_sample_int16[1][i], g_wrp_sample_int16[4][i],
-				g_wrp_sample_int16[2][i], g_wrp_sample_int16[5][i],
-				g_wrp_sample_int32[0][i], g_wrp_sample_int32[1][i],
-				g_wrp_sample_int32[2][i], g_wrp_sample_int32[3][i]);
-	}
-#else
-
 	CMD_Printf(
 			(uint8_t *)"V1, V1-90, V2, V2-90, V3, V3-90, I1, I2, I3, IN\n\r"
 	);
@@ -2421,11 +2390,6 @@ static uint8_t COMMAND_InvokeDumpSample(uint8_t *arg_str)
 				g_wrp_sample_int32[0][i], g_wrp_sample_int32[1][i],
 				g_wrp_sample_int32[2][i], g_wrp_sample_int32[3][i]);
 	}
-#endif
-
-#else
-	CMD_Printf((uint8_t *)"\n\r No support, please turn off the macro METER_ENABLE_MEASURE_CPU_LOAD! \n\r");
-#endif
 
 	return 0;
 }
@@ -2653,6 +2617,20 @@ static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str)
 	float min_dsad_time     = 0.0f;
 	float avg_dsad_time     = 0.0f;
 	EM_CALIBRATION calib    = EM_GetCalibInfo();
+	uint16_t cpu_speed = 24;
+
+	if(HOCODIV == 0x00)
+    {
+		cpu_speed = 24;
+    }
+    else if(HOCODIV == 0x01)
+    {
+    	cpu_speed = 12;
+    }
+    else
+    {
+    	cpu_speed = 6;
+    }
 
 	LOADTEST_TAU_Init();
 
@@ -2664,6 +2642,7 @@ static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str)
 
 	CMD_Printf((uint8_t *)"\n\r");
 	CMD_Printf((uint8_t *)"\n\rStarted measuring DSAD functions performance");
+	CMD_Printf((uint8_t *)"\n\rCPU Speed: %u MHz", cpu_speed);
 	CMD_Printf((uint8_t *)"\n\rPlease wait for about %0.3f seconds while system measuring",(float)g_dsad_max_count * 0.000256f);
 	while(g_dsad_count < g_dsad_max_count)
 	{

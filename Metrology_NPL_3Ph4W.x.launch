@@ -24,14 +24,14 @@
     <stringAttribute key="com.renesas.cdt.core.secondGDBExe" value="green_dsp-elf-gdb"/>
     <booleanAttribute key="com.renesas.cdt.core.secondGDBSupport" value="false"/>
     <intAttribute key="com.renesas.cdt.core.secondGdbPortNumber" value="61237"/>
-    <stringAttribute key="com.renesas.cdt.core.serverParam" value="-g E2LITE  -t R5F10NPL -uConnectionTimeout= 30 -umFreq= &quot;0&quot; -usFreq= &quot;0&quot; -umClock= &quot;1&quot; -w &quot;1&quot; -usupplyVoltage= &quot;0&quot; -ucommMethod= &quot;0&quot; -usecurityID= &quot;00000000000000000000&quot; -usecurityIdSize &quot;10&quot; -upermitFlash= 1 -uuseWideVoltageMode= 1 -ueraseRom= 1 -uresetOnReload= 1 -ustopTimerEmu= 0 -ustopSerialEmu= 0 -umaskInternalResetSignal= 0 -umaskTargetResetSignal= 0 -n 0 -uverifyOnWritingMemory= 1 -uAllowRRMDMM= 0 -uRelayBreak= 0"/>
+    <stringAttribute key="com.renesas.cdt.core.serverParam" value="-g E2LITE  -t R5F10NPL -uConnectionTimeout= 30 -umFreq= &quot;0&quot; -usFreq= &quot;0&quot; -umClock= &quot;1&quot; -w &quot;0&quot; -usupplyVoltage= &quot;0&quot; -ucommMethod= &quot;0&quot; -usecurityID= &quot;00000000000000000000&quot; -usecurityIdSize &quot;10&quot; -upermitFlash= 1 -uuseWideVoltageMode= 1 -ueraseRom= 1 -uresetOnReload= 1 -ustopTimerEmu= 0 -ustopSerialEmu= 0 -umaskInternalResetSignal= 0 -umaskTargetResetSignal= 0 -n 0 -uverifyOnWritingMemory= 1 -uAllowRRMDMM= 0 -uRelayBreak= 0"/>
     <booleanAttribute key="com.renesas.cdt.core.setResume" value="true"/>
     <booleanAttribute key="com.renesas.cdt.core.setStopAt" value="true"/>
     <booleanAttribute key="com.renesas.cdt.core.startServer" value="true"/>
     <stringAttribute key="com.renesas.cdt.core.stopAt" value="main"/>
     <stringAttribute key="com.renesas.cdt.core.targetDevice" value="R5F10NPL"/>
     <booleanAttribute key="com.renesas.cdt.core.useRemoteTarget" value="true"/>
-    <stringAttribute key="com.renesas.cdt.debug.ioview.dsf.registerSelection0" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;selectedRegisterList ioFilePath=&quot;C:\Users\a5126135\.eclipse\com.renesas.platform_1631769940\DebugComp\RL78\IoFiles\R5F10NPL.sfrx&quot;/&gt;&#13;&#10;"/>
+    <stringAttribute key="com.renesas.cdt.debug.ioview.dsf.registerSelection0" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;selectedRegisterList ioFilePath=&quot;C:\Users\a5126135\.eclipse\com.renesas.platform_2061004092\DebugComp\RL78\IoFiles\R5F10NPL.sfrx&quot;/&gt;&#13;&#10;"/>
     <stringAttribute key="com.renesas.cdt.launch.dsf.IO_MAP" value="${support_area_loc}"/>
     <booleanAttribute key="com.renesas.cdt.launch.dsf.USE_DEFAULT_IO_MAP" value="true"/>
     <listAttribute key="com.renesas.cdt.launch.dsf.downloadImages">
@@ -48,7 +48,7 @@
     </listAttribute>
     <booleanAttribute key="com.renesas.hardwaredebug.e1rl78-uRelayBreak=" value="false"/>
     <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.allowRRMDMM" value="false"/>
-    <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.e1_pwr" value="true"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.e1_pwr" value="false"/>
     <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.enable.hot.plug" value="false"/>
     <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.eraseFlash" value="true"/>
     <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.functional.safety" value="false"/>
@@ -78,7 +78,7 @@
     <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.delay" value="0"/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="false"/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
-    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="C:\Users\a5126135\Dev\Temporary\SCRATCH\Metrology_NPL_3Ph4W\Debug_CT\Metrology_NPL_3Ph4W.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="C:\Users\a5126135\Documents\EMS\RL78\Packages\YPMOD_RL78I1C_512_3PH\Active\Metrology_NPL_3Ph4W\Debug_CT\Metrology_NPL_3Ph4W.x"/>
     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageOffset" value=""/>
     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.initCommands" value=""/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadImage" value="true"/>
@@ -89,7 +89,7 @@
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="false"/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.stopAt" value="main"/>
-    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="C:\Users\a5126135\Dev\Temporary\SCRATCH\Metrology_NPL_3Ph4W\Debug_CT\Metrology_NPL_3Ph4W.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="C:\Users\a5126135\Documents\EMS\RL78\Packages\YPMOD_RL78I1C_512_3PH\Active\Metrology_NPL_3Ph4W\Debug_CT\Metrology_NPL_3Ph4W.x"/>
     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsOffset" value=""/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForImage" value="false"/>
     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForSymbols" value="false"/>

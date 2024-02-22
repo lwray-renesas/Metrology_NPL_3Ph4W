@@ -125,8 +125,7 @@ void R_PORT_Create(void)
     PM9 =   _00_PMn7_MODE_OUTPUT | _00_PMn6_MODE_OUTPUT | _00_PMn5_MODE_OUTPUT | _00_PMn4_MODE_OUTPUT |
             _00_PMn3_MODE_OUTPUT | _00_PMn2_MODE_OUTPUT | _00_PMn1_MODE_OUTPUT | _00_PMn0_MODE_OUTPUT;
 
-    PM15 =  _04_PMn2_MODE_INPUT | _02_PMn1_MODE_INPUT | _01_PMn0_MODE_INPUT; 
-
+    PM15 =  _04_PMn2_MODE_INPUT | _02_PMn1_MODE_INPUT | _01_PMn0_MODE_INPUT;
 }
 
 /* Start user code for adding. Do not edit comment generated here */

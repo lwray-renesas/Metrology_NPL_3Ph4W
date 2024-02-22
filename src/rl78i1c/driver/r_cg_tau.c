@@ -95,9 +95,9 @@ void R_TAU0_Create(void)
     TMPR103 = 0U;
     TMPR003 = 0U;
     /* Channel 0 used as interval timer */
-    TMR00 = _0000_TAU_CLOCK_SELECT_CKM0 | _0000_TAU_CLOCK_MODE_CKS | _0000_TAU_TRIGGER_SOFTWARE | 
+    TMR00 = _8000_TAU_CLOCK_SELECT_CKM1 | _0000_TAU_CLOCK_MODE_CKS | _0000_TAU_TRIGGER_SOFTWARE |
             _0000_TAU_MODE_INTERVAL_TIMER | _0000_TAU_START_INT_UNUSED;
-    TDR00 = _05DB_TAU_TDR00_VALUE;
+    TDR00 = 0xFFFFU;
     TOM0 &= (uint16_t)~_0001_TAU_CH0_SLAVE_OUTPUT;
     TO0 &= (uint16_t)~_0001_TAU_CH0_OUTPUT_VALUE_1;
     TOE0 &= (uint16_t)~_0001_TAU_CH0_OUTPUT_ENABLE;
@@ -135,7 +135,6 @@ void R_TAU0_Create(void)
 void R_TAU0_Channel0_Start(void)
 {
     TMIF00 = 0U;    /* clear INTTM00 interrupt flag */
-    TMMK00 = 0U;    /* enable INTTM00 interrupt */
     TS0 |= _0001_TAU_CH0_START_TRG_ON;
 }
 /***********************************************************************************************************************
@@ -147,7 +146,6 @@ void R_TAU0_Channel0_Start(void)
 void R_TAU0_Channel0_Stop(void)
 {
     TT0 |= _0001_TAU_CH0_STOP_TRG_ON;
-    TMMK00 = 1U;    /* disable INTTM00 interrupt */
     TMIF00 = 0U;    /* clear INTTM00 interrupt flag */
 }
 

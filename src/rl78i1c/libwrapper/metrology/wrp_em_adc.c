@@ -134,37 +134,6 @@ volatile uint16_t g_wrp_sample_count = EM_ADC_MAX_DEBUG_SAMPLE;
 int16_t  g_wrp_sample_int16[6][EM_ADC_MAX_DEBUG_SAMPLE];
 int32_t  g_wrp_sample_int32[4][EM_ADC_MAX_DEBUG_SAMPLE];
 
-#ifdef LPF_TEST
-
-/* Low pass filter - normalised version of: https://en.wikipedia.org/wiki/Low-pass_filter*/
-
-// y = a*RAW + (1 - a)Y_previous;
-//
-// Normalising for integer arithemtic (normalising to mutliplcation by 8)
-// a = 8/0.8 = 10
-// 1-a = 8/1-0.8 = 40
-//
-// Normalised the LPF looks like:
-// y = ((RAW * 8)/10) + ((Y_previous * 8)/40)
-
-int32_t  voltage;
-int32_t  voltage_previous;
-const int32_t alpha = 16;
-const int32_t one_minus_alpha = 16;
-int16_t  g_wrp_sample_vr_int16_lpf[EM_ADC_MAX_DEBUG_SAMPLE];
-
-volatile int32_t gradient = 0;
-volatile int32_t gradient_count = 0;
-volatile int32_t us_to_next_zc = 0;
-volatile uint8_t direction = 0U;
-volatile uint8_t saved_direction = 0U;
-volatile int32_t abs_voltage;
-volatile int32_t abs_voltage_previous;
-volatile uint8_t timer_running = 0U;
-volatile uint16_t final_delay = 0U;
-
-#endif
-
 #endif /* __DEBUG */
 
 uint8_t g_EM_ADC_GainPhaseCurrentLevel[EM_VOL_CHANNEL_NUM];        /* The current level of phase gain */
@@ -619,7 +588,6 @@ void EM_ADC_InterruptCallback(void)
 
 	/* Debug the signal */
 #ifdef __DEBUG
-#ifndef METER_ENABLE_MEASURE_CPU_LOAD
 	if (g_wrp_sample_count < EM_ADC_MAX_DEBUG_SAMPLE)
 	{
 		g_wrp_sample_int16[0][g_wrp_sample_count] = g_wrp_adc_samples.phase_r.v;
@@ -634,81 +602,8 @@ void EM_ADC_InterruptCallback(void)
 		g_wrp_sample_int32[2][g_wrp_sample_count] = g_wrp_adc_samples.phase_b.i;
 		g_wrp_sample_int32[3][g_wrp_sample_count] = g_wrp_adc_samples.neutral.i;
 
-#ifdef LPF_TEST
-		/* Low Pass Filter*/
-		voltage_previous = voltage;
-		voltage = ((g_wrp_adc_samples.phase_r.v * 8)/alpha) + ((voltage_previous * 8)/one_minus_alpha);
-		g_wrp_sample_vr_int16_lpf[g_wrp_sample_count] = voltage;
-
-		/* only run the algorithm if the zero-cross GPIO timer is not running*/
-		if(0U == timer_running)
-		{
-			if((voltage > 0) && (voltage < voltage_previous))
-			{
-				/* Positive quarter cycle falling*/
-				direction = 1U;
-			}
-			else if((voltage < 0) && (voltage > voltage_previous))
-			{
-				/* Negative quarter cycle rising*/
-				direction = 2U;
-			}
-			else
-			{
-				/* Don't care*/
-				direction = 0U;
-			}
-
-			if(direction != 0U)
-			{
-				/* Get the absolute values of the filtered voltages*/
-				abs_voltage = (voltage > 0) ? voltage : (-1 * voltage);
-				abs_voltage_previous = (voltage_previous > 0) ? voltage_previous : (-1 * voltage_previous);
-
-				/* Run algorithm*/
-				if((abs_voltage < 6000) && (abs_voltage > 3000))
-				{
-					/* Calculate gradient in linear region*/
-					gradient += (abs_voltage - abs_voltage_previous);
-					++gradient_count;
-				}
-				else if((abs_voltage <= 3000) && (gradient_count > 0))
-				{
-					/* Calculate micro-seconds until next zero-cross event*/
-					gradient += (abs_voltage - abs_voltage_previous);
-					++gradient_count;
-					gradient /= gradient_count; /* The average value we change every 256uS*/
-					gradient = (gradient > 0) ? gradient : (-1 * gradient);
-					us_to_next_zc = (abs_voltage * 256) / gradient;
-
-					timer_running = 1U;
-					saved_direction = direction;
-
-					/* Compensate for filtering delays ~260uS for LPF TODO: Review if we need it to be larger for HPF compensation*/
-					final_delay = (uint16_t)us_to_next_zc - 260U;
-
-					/* Fire the delay counter*/
-					R_TAU0_Channel3_Start_value(final_delay);
-
-					/* Reset the gradient in preparation*/
-					gradient = 0;
-					gradient_count = 0;
-				}
-				else
-				{
-					/* Do Nothing*/
-				}
-			}
-		}
-#endif
-
 		g_wrp_sample_count++;
 	}
-	else
-	{
-		voltage_previous = voltage = g_wrp_adc_samples.phase_r.v;
-	}
-#endif /* METER_ENABLE_MEASURE_CPU_LOAD */
 #endif /* __DEBUG */
 
 	/*

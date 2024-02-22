@@ -33,6 +33,7 @@ Includes
 #include "r_cg_12adc.h"
 /* Start user code for include. Do not edit comment generated here */
 #include "wrp_app_mcu.h"
+#include "r_cg_wdt.h"
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -67,9 +68,14 @@ void R_12ADC_Create(void)
     /* Set INTAD low priority */
     ADPR1 = 1U;
     ADPR0 = 1U;
-    /* Set ANI00, ANI01, ANI02 pin */
+    /* Set ANI00, ANI01, ANI02, VREFOUT pin */
+	#if 0
     PMC2 = 0xFEU;
     PM2 = 0xFEU;
+	#else /* Improved noise performance*/
+	PMC2 |= 0x39U;
+    PM2 |= 0x39U;	
+	#endif
     /* Configure VREF before converter */
     /* Enable the BGR */
     VREFAMPCNT = _10_VREF_BGR_ENABLE;

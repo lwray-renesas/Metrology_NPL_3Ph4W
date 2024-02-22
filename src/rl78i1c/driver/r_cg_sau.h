@@ -3,7 +3,7 @@
 * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products.
 * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
 * applicable laws, including copyright laws. 
-* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED
+* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED
 * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY
 * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE FOR ANY DIRECT,
@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2015, 2017 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2015, 2021 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_sau.h
-* Version      : Code Generator for RL78/I1C V1.01.00.02 [15 May 2017]
-* Device(s)    : R5F10NPJ
+* Version      : Applilet4 for RL78/I1C V1.01.07.02 [08 Nov 2021]
+* Device(s)    : R5F10NPL
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for SAU module.
-* Creation Date: 3/22/2019
+* Creation Date: 22/02/2024
 ***********************************************************************************************************************/
 #ifndef SAU_H
 #define SAU_H
@@ -268,6 +268,9 @@ commonly supplied to each channel. (SPSm)
 /*
     Noise filter enable register 0 (NFEN0) 
 */
+/* Use of noise filter of RxD4 pin (SNFEN40) */
+#define _00_SAU_RXD4_FILTER_OFF                 (0x00U) /* noise filter off */
+#define _80_SAU_RXD4_FILTER_ON                  (0x80U) /* noise filter on */
 /* Use of noise filter of RxD3 pin (SNFEN30) */
 #define _00_SAU_RXD3_FILTER_OFF                 (0x00U) /* noise filter off */
 #define _40_SAU_RXD3_FILTER_ON                  (0x40U) /* noise filter on */
@@ -291,25 +294,15 @@ commonly supplied to each channel. (SPSm)
 /***********************************************************************************************************************
 Macro definitions
 ***********************************************************************************************************************/
-#define _9A00_SAU0_CH0_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
-#define _9A00_SAU0_CH1_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
+#define _9A00_SAU0_CH2_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
+#define _9A00_SAU0_CH3_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
 #define _0020_SMR00_DEFAULT_VALUE               (0x0020U) /* SMR00 default value */
-#define _0020_SMR01_DEFAULT_VALUE               (0x0020U) /* SMR01 default value */
+#define _0020_SMR02_DEFAULT_VALUE               (0x0020U) /* SMR02 default value */
+#define _0020_SMR03_DEFAULT_VALUE               (0x0020U) /* SMR03 default value */
 #define _0004_SCR00_DEFAULT_VALUE               (0x0004U) /* SCR00 default value */
-#define _0004_SCR01_DEFAULT_VALUE               (0x0004U) /* SCR01 default value */
+#define _0004_SCR02_DEFAULT_VALUE               (0x0004U) /* SCR02 default value */
+#define _0004_SCR03_DEFAULT_VALUE               (0x0004U) /* SCR03 default value */
 #define _0A0A_SO0_DEFAULT_VALUE                 (0x0A0AU) /* SO0 default value */
-#define _9A00_SAU1_CH0_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
-#define _9A00_SAU1_CH1_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
-#define _0020_SMR10_DEFAULT_VALUE               (0x0020U) /* SMR10 default value */
-#define _0020_SMR11_DEFAULT_VALUE               (0x0020U) /* SMR11 default value */
-#define _0020_SMR12_DEFAULT_VALUE               (0x0020U) /* SMR12 default value */
-#define _0004_SCR10_DEFAULT_VALUE               (0x0004U) /* SCR10 default value */
-#define _0004_SCR11_DEFAULT_VALUE               (0x0004U) /* SCR11 default value */
-#define _0004_SCR12_DEFAULT_VALUE               (0x0004U) /* SCR12 default value */
-#define _0A0A_SO1_DEFAULT_VALUE                 (0x0A0AU) /* SO1 default value */
-#define IIC_WAITTIME                            (14U) /* change the waiting time according to the system */
-
-#define _4C00_UART_DIVISOR                      (0x4C00U)
 
 /***********************************************************************************************************************
 Typedef definitions
@@ -319,20 +312,17 @@ Typedef definitions
 Global functions
 ***********************************************************************************************************************/
 void R_SAU0_Create(void);
-void R_UART0_Create(void);
-void R_UART0_Start(void);
-void R_UART0_Stop(void);
-void R_UART0_Start_Reception(void);
-void R_UART0_Stop_Reception(void);
-MD_STATUS R_UART0_Send(uint8_t * const tx_buf, uint16_t tx_num);
-MD_STATUS R_UART0_Receive(uint8_t * const rx_buf, uint16_t rx_num);
-
-
-static void r_uart0_callback_receiveend(void);
-static void r_uart0_callback_sendend(void);
-static void r_uart0_callback_error(uint8_t err_type);
-static void r_uart0_callback_softwareoverrun(uint16_t rx_data);
-
+void R_UART1_Create(void);
+void R_UART1_Start(void);
+void R_UART1_Stop(void);
+MD_STATUS R_UART1_Send(uint8_t * const tx_buf, uint16_t tx_num);
+MD_STATUS R_UART1_Receive(uint8_t * const rx_buf, uint16_t rx_num);
+static void r_uart1_callback_receiveend(void);
+static void r_uart1_callback_sendend(void);
+static void r_uart1_callback_error(uint8_t err_type);
+static void r_uart1_callback_softwareoverrun(uint16_t rx_data);
 /* Start user code for function. Do not edit comment generated here */
+void R_UART1_Start_Reception(void);
+void R_UART1_Stop_Reception(void);
 /* End user code. Do not edit comment generated here */
 #endif

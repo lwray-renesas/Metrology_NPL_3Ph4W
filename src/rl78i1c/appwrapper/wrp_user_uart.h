@@ -35,12 +35,12 @@ Macro definitions
 #ifdef __DEBUG
 
 /* Control */
-#define     WRP_UART_DRIVER_Start()                     R_UART0_Start()
-#define     WRP_UART_DRIVER_Stop()                      R_UART0_Stop()
+#define     WRP_UART_DRIVER_Start()                     R_UART1_Start()
+#define     WRP_UART_DRIVER_Stop()                      R_UART1_Stop()
 
 /* Send/Receive data */
-#define     WRP_UART_DRIVER_SendData(data, length)      R_UART0_Send(data, length)
-#define     WRP_UART_DRIVER_ReceiveData(data, length)   R_UART0_Receive(data, length)
+#define     WRP_UART_DRIVER_SendData(data, length)      R_UART1_Send(data, length)
+#define     WRP_UART_DRIVER_ReceiveData(data, length)   R_UART1_Receive(data, length)
 
 #else
 

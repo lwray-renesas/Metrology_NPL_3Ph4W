@@ -47,6 +47,23 @@ Pragma directive
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+
+#ifdef METER_ENABLE_MEASURE_CPU_LOAD
+#include "load_test.h"
+#define DSAD_MEASUREMENT_TIME   (65535)
+uint16_t g_timer0_dsad_counter = 0;
+
+uint16_t g_timer0_dsad_maxcounter = 0;
+uint16_t g_timer0_dsad_mincounter = 0;
+
+uint16_t g_dsad_count = DSAD_MEASUREMENT_TIME;
+const uint16_t g_dsad_max_count = DSAD_MEASUREMENT_TIME;
+
+uint32_t g_timer0_dsad_sum_counter = 0;
+
+uint16_t g_timer0_diff = 0;
+#endif
+
 extern void EM_ADC_InterruptCallback(void);
 /* End user code. Do not edit comment generated here */
 
@@ -65,6 +82,14 @@ extern void EM_ADC_InterruptCallback(void);
 __INTERRUPT static void r_dsadc_interrupt(void)
 {
     /* Start user code. Do not edit comment generated here */
+#ifdef METER_ENABLE_MEASURE_CPU_LOAD
+    if (g_dsad_count < g_dsad_max_count)
+    {
+        g_dsad_count++;
+        LOADTEST_TAU_Start();
+    }
+#endif
+
     DTC_USER_ADC_TRANSFER_RELOAD();
     
     /* Disable ELC1 DSAD-->ADC trigger to mask off fixed 21us DSAD pulse width, so TAU01-->ADC can be triggered */
@@ -77,6 +102,30 @@ __INTERRUPT static void r_dsadc_interrupt(void)
 	 * to prevent unwanted DSAD->ADC trigger when enable back
     */
     R_ELC_DIRECT_SET(ELC_TRIGGER_SRC_INTDSAD_MAIN, _01_ELC_EVENT_LINK_AD);
+
+#ifdef METER_ENABLE_MEASURE_CPU_LOAD
+g_timer0_diff = LOADTEST_TAU_Diff();
+
+LOADTEST_TAU_Stop();
+
+g_timer0_dsad_sum_counter += g_timer0_diff;
+
+if (g_dsad_count <=  g_dsad_max_count)
+{
+    g_timer0_dsad_counter = g_timer0_diff;
+
+    if ( g_timer0_dsad_counter > g_timer0_dsad_maxcounter)
+    {
+        g_timer0_dsad_maxcounter = g_timer0_dsad_counter;
+    }
+
+    if ( g_timer0_dsad_counter < g_timer0_dsad_mincounter)
+    {
+        g_timer0_dsad_mincounter = g_timer0_dsad_counter;
+    }
+}
+
+#endif
     /* End user code. Do not edit comment generated here */
 }
 

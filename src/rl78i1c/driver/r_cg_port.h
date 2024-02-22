@@ -3,7 +3,7 @@
 * This software is supplied by Renesas Electronics Corporation and is only intended for use with Renesas products.
 * No other uses are authorized. This software is owned by Renesas Electronics Corporation and is protected under all
 * applicable laws, including copyright laws. 
-* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIESREGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED
+* THIS SOFTWARE IS PROVIDED "AS IS" AND RENESAS MAKES NO WARRANTIES REGARDING THIS SOFTWARE, WHETHER EXPRESS, IMPLIED
 * OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 * NON-INFRINGEMENT.  ALL SUCH WARRANTIES ARE EXPRESSLY DISCLAIMED.TO THE MAXIMUM EXTENT PERMITTED NOT PROHIBITED BY
 * LAW, NEITHER RENESAS ELECTRONICS CORPORATION NOR ANY OF ITS AFFILIATED COMPANIES SHALL BE LIABLE FOR ANY DIRECT,
@@ -14,16 +14,16 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2015, 2017 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2015, 2021 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
 * File Name    : r_cg_port.h
-* Version      : Code Generator for RL78/I1C V1.01.00.02 [15 May 2017]
-* Device(s)    : R5F10NPJ
+* Version      : Applilet4 for RL78/I1C V1.01.07.02 [08 Nov 2021]
+* Device(s)    : R5F10NPL
 * Tool-Chain   : CCRL
 * Description  : This file implements device driver for Port module.
-* Creation Date: 3/22/2019
+* Creation Date: 22/02/2024
 ***********************************************************************************************************************/
 #ifndef PORT_H
 #define PORT_H
@@ -31,6 +31,194 @@
 /***********************************************************************************************************************
 Macro definitions (Register bit)
 ***********************************************************************************************************************/
+/*
+    Port mode control registers (PMCn) 
+*/
+/* Pn0 pin digital I/O/analog input selection (PMCn0) */
+#define _00_PMCn0_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _01_PMCn0_DI_ON                   (0x01U) /* analog input */
+/* Pn1 pin digital I/O/analog input selection (PMCn1) */
+#define _00_PMCn1_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _02_PMCn1_DI_ON                   (0x02U) /* analog input */
+/* Pn2 pin digital I/O/analog input selection (PMCn2) */
+#define _00_PMCn2_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _04_PMCn2_DI_ON                   (0x04U) /* analog input */
+/* Pn3 pin digital I/O/analog input selection (PMCn3) */
+#define _00_PMCn3_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _08_PMCn3_DI_ON                   (0x08U) /* analog input */
+/* Pn4 pin digital I/O/analog input selection (PMCn4) */
+#define _00_PMCn4_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _10_PMCn4_DI_ON                   (0x10U) /* analog input */
+/* Pn5 pin digital I/O/analog input selection (PMCn5) */
+#define _00_PMCn5_NOT_USE                 (0x00U) /* digital I/O (alternate function other than analog input) */
+#define _20_PMCn5_DI_ON                   (0x20U) /* analog input */
+
+/*
+    LCD port function registers (PFSEG0) 
+*/
+/* Port (other than as common outputs)/common outputs specification of P90/P37 pins (PFCOM0) */
+#define _00_PFCOM0_PORT                   (0x00U) /* used the P90(PIOR05=0)/P37(PIOR05=1) pin as port */
+#define _01_PFCOM0_COM                    (0x01U) /* used the P90(PIOR05=0)/P37(PIOR05=1) pin as common output */
+/* Port (other than as common outputs)/common outputs specification P91/P36 pins (PFCOM1) */
+#define _00_PFCOM1_PORT                   (0x00U) /* used the P91(PIOR05=0)/P36(PIOR05=1) pin as port */
+#define _02_PFCOM1_COM                    (0x02U) /* used the P91(PIOR05=0)/P36(PIOR05=1) pin as common output */
+/* Port (other than as common outputs)/common outputs specification P92/P35 pins (PFCOM2) */
+#define _00_PFCOM2_PORT                   (0x00U) /* used the P92(PIOR05=0)/P35(PIOR05=1) pin as port */
+#define _04_PFCOM2_COM                    (0x04U) /* used the P92(PIOR05=0)/P35(PIOR05=1) pin as common output */
+/* Port (other than as common outputs)/common outputs specification P93/P34 pins (PFCOM3) */
+#define _00_PFCOM3_PORT                   (0x00U) /* used the P93(PIOR05=0)/P34(PIOR05=1) pin as port */
+#define _08_PFCOM3_COM                    (0x08U) /* used the P93(PIOR05=0)/P34(PIOR05=1) pin as common output */
+
+/*
+    LCD port function registers (PFSEG1) 
+*/
+/* Port (other than segment output)/segment outputs specification of P94/P33 pins (PFSEG00) */
+#define _00_PFSEG00_PORT                  (0x00U) /* used the P94(PIOR05=0)/P33(PIOR05=1) pin as port */
+#define _01_PFSEG00_SEG                   (0x01U) /* used the P94(PIOR05=0)/P33(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P95/P32 pins (PFSEG01) */
+#define _00_PFSEG01_PORT                  (0x00U) /* used the P95(PIOR05=0)/P32(PIOR05=1) pin as port */
+#define _02_PFSEG01_SEG                   (0x02U) /* used the P95(PIOR05=0)/P32(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P96/P31 pins (PFSEG02) */
+#define _00_PFSEG02_PORT                  (0x00U) /* used the P96(PIOR05=0)/P31(PIOR05=1) pin as port */
+#define _04_PFSEG02_SEG                   (0x04U) /* used the P96(PIOR05=0)/P31(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P97/P30 pins (PFSEG03) */
+#define _00_PFSEG03_PORT                  (0x00U) /* used the P97(PIOR05=0)/P30(PIOR05=1)  pin as port */
+#define _08_PFSEG03_SEG                   (0x08U) /* used the P97(PIOR05=0)/P30(PIOR05=1)  pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P10 pins (PFSEG04) */
+#define _00_PFSEG04_PORT                  (0x00U) /* used the P10 pin as port */
+#define _10_PFSEG04_SEG                   (0x10U) /* used the P10 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P11 pins (PFSEG05) */
+#define _00_PFSEG05_PORT                  (0x00U) /* used the P11 pin as port */
+#define _20_PFSEG05_SEG                   (0x20U) /* used the P11 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P12 pins (PFSEG06) */
+#define _00_PFSEG06_PORT                  (0x00U) /* used the P12 pin as port */
+#define _40_PFSEG06_SEG                   (0x40U) /* used the P12 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P13 pins (PFSEG07) */
+#define _00_PFSEG07_PORT                  (0x00U) /* used the P13 pin as port */
+#define _80_PFSEG07_SEG                   (0x80U) /* used the P13 pin as segment output */
+
+/*
+    LCD port function registers (PFSEG2) 
+*/
+/* Port (other than segment output)/segment outputs specification of P14 pins (PFSEG08) */
+#define _00_PFSEG08_PORT                  (0x00U) /* used the P14 pin as port */
+#define _01_PFSEG08_SEG                   (0x01U) /* used the P14 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P15 pins (PFSEG09) */
+#define _00_PFSEG09_PORT                  (0x00U) /* used the P15 pin as port */
+#define _02_PFSEG09_SEG                   (0x02U) /* used the P15 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P16 pins (PFSEG10) */
+#define _00_PFSEG10_PORT                  (0x00U) /* used the P16 pin as port */
+#define _04_PFSEG10_SEG                   (0x04U) /* used the P16 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P17 pins (PFSEG11) */
+#define _00_PFSEG11_PORT                  (0x00U) /* used the P17 pin as port */
+#define _08_PFSEG11_SEG                   (0x08U) /* used the P17 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P80 pins (PFSEG12) */
+#define _00_PFSEG12_PORT                  (0x00U) /* used the P80 pin as port */
+#define _10_PFSEG12_SEG                   (0x10U) /* used the P80 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P81 pins (PFSEG13) */
+#define _00_PFSEG13_PORT                  (0x00U) /* used the P81 pin as port */
+#define _20_PFSEG13_SEG                   (0x20U) /* used the P81 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P82 pins (PFSEG14) */
+#define _00_PFSEG14_PORT                  (0x00U) /* used the P82 pin as port */
+#define _40_PFSEG14_SEG                   (0x40U) /* used the P82 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P83 pins (PFSEG15) */
+#define _00_PFSEG15_PORT                  (0x00U) /* used the P83 pin as port */
+#define _80_PFSEG15_SEG                   (0x80U) /* used the P83 pin as segment output */
+
+/*
+    LCD port function registers (PFSEG3) 
+*/
+/* Port (other than segment output)/segment outputs specification of P70 pins (PFSEG16) */
+#define _00_PFSEG16_PORT                  (0x00U) /* used the P70 pin as port */
+#define _01_PFSEG16_SEG                   (0x01U) /* used the P70 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P71 pins (PFSEG17) */
+#define _00_PFSEG17_PORT                  (0x00U) /* used the P71 pin as port */
+#define _02_PFSEG17_SEG                   (0x02U) /* used the P71 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P72 pins (PFSEG18) */
+#define _00_PFSEG18_PORT                  (0x00U) /* used the P72 pin as port */
+#define _04_PFSEG18_SEG                   (0x04U) /* used the P72 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P73 pins (PFSEG19) */
+#define _00_PFSEG19_PORT                  (0x00U) /* used the P73 pin as port */
+#define _08_PFSEG19_SEG                   (0x08U) /* used the P73 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P74 pins (PFSEG20) */
+#define _00_PFSEG20_PORT                  (0x00U) /* used the P74 pin as port */
+#define _10_PFSEG20_SEG                   (0x10U) /* used the P74 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P75 pins (PFSEG21) */
+#define _00_PFSEG21_PORT                  (0x00U) /* used the P75 pin as port */
+#define _20_PFSEG21_SEG                   (0x20U) /* used the P75 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P76 pins (PFSEG22) */
+#define _00_PFSEG22_PORT                  (0x00U) /* used the P76 pin as port */
+#define _40_PFSEG22_SEG                   (0x40U) /* used the P76 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P77 pins (PFSEG23) */
+#define _00_PFSEG23_PORT                  (0x00U) /* used the P77 pin as port */
+#define _80_PFSEG23_SEG                   (0x80U) /* used the P77 pin as segment output */
+
+/*
+    LCD port function registers (PFSEG4) 
+*/
+/* Port (other than segment output)/segment outputs specification of P30/P97 pins (PFSEG24) */
+#define _00_PFSEG24_PORT                  (0x00U) /* used the P30(PIOR05=0)/P97(PIOR05=1) pin as port */
+#define _01_PFSEG24_SEG                   (0x01U) /* used the P30(PIOR05=0)/P97(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P31/P96 pins (PFSEG25) */
+#define _00_PFSEG25_PORT                  (0x00U) /* used the P31(PIOR05=0)/P96(PIOR05=1) pin as port */
+#define _02_PFSEG25_SEG                   (0x02U) /* used the P31(PIOR05=0)/P96(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P32/P95 pins (PFSEG26) */
+#define _00_PFSEG26_PORT                  (0x00U) /* used the P32(PIOR05=0)/P95(PIOR05=1) pin as port */
+#define _04_PFSEG26_SEG                   (0x04U) /* used the P32(PIOR05=0)/P95(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P33/P94 pins (PFSEG27) */
+#define _00_PFSEG27_PORT                  (0x00U) /* used the P33(PIOR05=0)/P94(PIOR05=1) pin as port */
+#define _08_PFSEG27_SEG                   (0x08U) /* used the P33(PIOR05=0)/P94(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P34/P93 pins (PFSEG28) */
+#define _00_PFSEG28_PORT                  (0x00U) /* used the P34(PIOR05=0)/P93(PIOR05=1) pin as port */
+#define _10_PFSEG28_SEG                   (0x10U) /* used the P34(PIOR05=0)/P93(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P35/P92 pins (PFSEG29) */
+#define _00_PFSEG29_PORT                  (0x00U) /* used the P35(PIOR05=0)/P92(PIOR05=1) pin as port */
+#define _20_PFSEG29_SEG                   (0x20U) /* used the P35(PIOR05=0)/P92(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P36/P91 pins (PFSEG30) */
+#define _00_PFSEG30_PORT                  (0x00U) /* used the P36(PIOR05=0)/P91(PIOR05=1) pin as port */
+#define _40_PFSEG30_SEG                   (0x40U) /* used the P36(PIOR05=0)/P91(PIOR05=1) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P37/P90 pins (PFSEG31) */
+#define _00_PFSEG31_PORT                  (0x00U) /* used the P37(PIOR05=0)/P90(PIOR05=1) pin as port */
+#define _80_PFSEG31_SEG                   (0x80U) /* used the P37(PIOR05=0)/P90(PIOR05=1) pin as segment output */
+
+/*
+    LCD port function registers (PFSEG5) 
+*/
+/* Port (other than segment output)/segment outputs specification of P02/P50 pins (PFSEG32) */
+#define _00_PFSEG32_PORT                  (0x00U) /* used the P02(80-pin)/P50(100-pin) pin as port */
+#define _01_PFSEG32_SEG                   (0x01U) /* used the P02(80-pin)/P50(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P03/P51 pins (PFSEG33) */
+#define _00_PFSEG33_PORT                  (0x00U) /* used the P03(80-pin)/P51(100-pin) pin as port */
+#define _02_PFSEG33_SEG                   (0x02U) /* used the P03(80-pin)/P51(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P04/P52 pins (PFSEG34) */
+#define _00_PFSEG34_PORT                  (0x00U) /* used the P04(80-pin)/P52(100-pin) pin as port */
+#define _04_PFSEG34_SEG                   (0x04U) /* used the P04(80-pin)/P52(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P05/P53 pins (PFSEG35) */
+#define _00_PFSEG35_PORT                  (0x00U) /* used the P05(80-pin)/P53(100-pin) pin as port */
+#define _08_PFSEG35_SEG                   (0x08U) /* used the P05(80-pin)/P53(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P06/P54 pins (PFSEG36) */
+#define _00_PFSEG36_PORT                  (0x00U) /* used the P06(80-pin)/P54(100-pin) pin as port */
+#define _10_PFSEG36_SEG                   (0x10U) /* used the P06(80-pin)/P54(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P07/P55 pins (PFSEG37) */
+#define _00_PFSEG37_PORT                  (0x00U) /* used the P07(80-pin)/P55(100-pin) pin as port */
+#define _20_PFSEG37_SEG                   (0x20U) /* used the P07(80-pin)/P55(100-pin) pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P56 pins (PFSEG38) */
+#define _00_PFSEG38_PORT                  (0x00U) /* used the P56 pin as port */
+#define _40_PFSEG38_SEG                   (0x40U) /* used the P56 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P57 pins (PFSEG39) */
+#define _00_PFSEG39_PORT                  (0x00U) /* used the P57 pin as port */
+#define _80_PFSEG39_SEG                   (0x80U) /* used the P57 pin as segment output */
+
+/*
+    LCD port function registers (PFSEG6) 
+*/
+/* Port (other than segment output)/segment outputs specification of P84 pins (PFSEG40) */
+#define _00_PFSEG40_PORT                  (0x00U) /* used the P84 pin as port */
+#define _01_PFSEG40_SEG                   (0x01U) /* used the P84 pin as segment output */
+/* Port (other than segment output)/segment outputs specification of P85 pins (PFSEG41) */
+#define _00_PFSEG41_PORT                  (0x00U) /* used the P85 pin as port */
+#define _02_PFSEG41_SEG                   (0x02U) /* used the P85 pin as segment output */
+
 /*
     Port mode registers (PMn) 
 */
@@ -60,7 +248,7 @@ Macro definitions (Register bit)
 #define _80_PMn7_MODE_INPUT               (0x80U) /* input mode (output buffer off) */
 
 /*
-    Pin mode registers (Pn) 
+    Port mode registers (Pn) 
 */
 /* Pn0 pin I/O mode selection (Pn0) */
 #define _00_Pn0_OUTPUT_0                  (0x00U) /* Pn0 output 0 */
@@ -170,203 +358,7 @@ Macro definitions (Register bit)
 /* Pn7 pin output mode selection (POMn7) */
 #define _00_POMn7_NCH_OFF                 (0x00U) /* Pn7 normal output mode */
 #define _80_POMn7_NCH_ON                  (0x80U) /* Pn7 N-ch open-drain output (VDD tolerance) mode */
-/*
-    Port Operation Mode Register (PMCm)
-*/
-/* Pmn pin digital input buffer selection (PMCmn) */
-#define _01_PMCn0_NOT_USE               (0x01U) /* not use Pn0 digital input */
-#define _00_PMCn0_DI_ON                 (0x00U) /* enable Pn0 digital input */
-#define _02_PMCn1_NOT_USE               (0x02U) /* not use Pn1 digital input */
-#define _00_PMCn1_DI_ON                 (0x00U) /* enable Pn1 digital input */
-#define _04_PMCn2_NOT_USE               (0x04U) /* not use Pn2 digital input */
-#define _00_PMCn2_DI_ON                 (0x00U) /* enable Pn2 digital input */
-#define _08_PMCn3_NOT_USE               (0x08U) /* not use Pn3 digital input */
-#define _00_PMCn3_DI_ON                 (0x00U) /* enable Pn3 digital input */
-#define _10_PMCn4_NOT_USE               (0x10U) /* not use Pn4 digital input */
-#define _00_PMCn4_DI_ON                 (0x00U) /* enable Pn4 digital input */
-#define _20_PMCn5_NOT_USE               (0x20U) /* not use Pn5 digital input */
-#define _00_PMCn5_DI_ON                 (0x00U) /* enable Pn5 digital input */
-#define _40_PMCn6_NOT_USE               (0x40U) /* not use Pn6 digital input */
-#define _00_PMCn6_DI_ON                 (0x00U) /* enable Pn6 digital input */
-#define _80_PMCn7_NOT_USE               (0x80U) /* not use Pn7 digital input */
-#define _00_PMCn7_DI_ON                 (0x00U) /* enable Pn7 digital input */
-/*
-    A/D port configuration register (ADPC) 
-*/
-/* Analog I/O (A)/digital I/O (D) switching (ADPC2,ADPC1,ADPC0) */
-#define _00_AD_ADPC_6ANALOG               (0x00U) /* ANI0 - ANI5 */
-#define _01_AD_ADPC_0ANALOG               (0x01U) /* All digital */
-#define _02_AD_ADPC_1ANALOG               (0x02U) /* ANI0 */
-#define _03_AD_ADPC_2ANALOG               (0x03U) /* ANI0 - ANI1 */
-#define _04_AD_ADPC_3ANALOG               (0x04U) /* ANI0 - ANI2 */
-#define _05_AD_ADPC_4ANALOG               (0x05U) /* ANI0 - ANI3 */
-#define _06_AD_ADPC_5ANALOG               (0x06U) /* ANI0 - ANI4 */
 
-/*
-    LCD port function registers (PFSEG0) 
-*/
-/* Port (other than segment output)/segment outputs specification of P90 pins (COM0) */
-#define _00_PFCOM0_PORT                  (0x00U) /* used the P90 pin as port */
-#define _01_PFCOM0_COM                   (0x01U) /* used the P90 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P91 pins (COM1) */
-#define _00_PFCOM1_PORT                  (0x00U) /* used the P91 pin as port */
-#define _02_PFCOM1_COM                   (0x02U) /* used the P91 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P92 pins (COM2) */
-#define _00_PFCOM2_PORT                  (0x00U) /* used the P92 pin as port */
-#define _04_PFCOM2_COM                   (0x04U) /* used the P92 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P93 pins (COM3) */
-#define _00_PFCOM3_PORT                  (0x00U) /* used the P93 pin as port */
-#define _08_PFCOM3_COM                   (0x08U) /* used the P93 pin as segment output */
-
-/*
-    LCD port function registers (PFSEG1) 
-*/
-/* Port (other than segment output)/segment outputs specification of P94 pins (PFSEG00) */
-#define _00_PFSEG00_PORT                  (0x00U) /* used the P94 pin as port */
-#define _01_PFSEG00_SEG                   (0x01U) /* used the P94 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P95 pins (PFSEG01) */
-#define _00_PFSEG01_PORT                  (0x00U) /* used the P95 pin as port */
-#define _02_PFSEG01_SEG                   (0x02U) /* used the P95 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P96 pins (PFSEG02) */
-#define _00_PFSEG02_PORT                  (0x00U) /* used the P96 pin as port */
-#define _04_PFSEG02_SEG                   (0x04U) /* used the P96 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P97 pins (PFSEG03) */
-#define _00_PFSEG03_PORT                  (0x00U) /* used the P97 pin as port */
-#define _08_PFSEG03_SEG                   (0x08U) /* used the P97 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P10 pins (PFSEG04) */
-#define _00_PFSEG04_PORT                  (0x00U) /* used the P10 pin as port */
-#define _10_PFSEG04_SEG                   (0x10U) /* used the P10 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P11 pins (PFSEG05) */
-#define _00_PFSEG05_PORT                  (0x00U) /* used the P11 pin as port */
-#define _20_PFSEG05_SEG                   (0x20U) /* used the P11 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P12 pins (PFSEG06) */
-#define _00_PFSEG06_PORT                  (0x00U) /* used the P12 pin as port */
-#define _40_PFSEG06_SEG                   (0x40U) /* used the P12 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P13 pins (PFSEG07) */
-#define _00_PFSEG07_PORT                  (0x00U) /* used the P13 pin as port */
-#define _80_PFSEG07_SEG                   (0x80U) /* used the P13 pin as segment output */
-
-/*
-    LCD port function registers (PFSEG2) 
-*/
-/* Port (other than segment output)/segment outputs specification of P14 pins (PFSEG08) */
-#define _00_PFSEG08_PORT                  (0x00U) /* used the P14 pin as port */
-#define _01_PFSEG08_SEG                   (0x01U) /* used the P14 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P15 pins (PFSEG09) */
-#define _00_PFSEG09_PORT                  (0x00U) /* used the P15 pin as port */
-#define _02_PFSEG09_SEG                   (0x02U) /* used the P15 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P16 pins (PFSEG10) */
-#define _00_PFSEG10_PORT                  (0x00U) /* used the P16 pin as port */
-#define _04_PFSEG10_SEG                   (0x04U) /* used the P16 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P17 pins (PFSEG11) */
-#define _00_PFSEG11_PORT                  (0x00U) /* used the P17 pin as port */
-#define _08_PFSEG11_SEG                   (0x08U) /* used the P17 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P80 pins (PFSEG12) */
-#define _00_PFSEG12_PORT                  (0x00U) /* used the P80 pin as port */
-#define _10_PFSEG12_SEG                   (0x10U) /* used the P80 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P81 pins (PFSEG13) */
-#define _00_PFSEG13_PORT                  (0x00U) /* used the P81 pin as port */
-#define _20_PFSEG13_SEG                   (0x20U) /* used the P81 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P82 pins (PFSEG14) */
-#define _00_PFSEG14_PORT                  (0x00U) /* used the P82 pin as port */
-#define _40_PFSEG14_SEG                   (0x40U) /* used the P82 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P83 pins (PFSEG15) */
-#define _00_PFSEG15_PORT                  (0x00U) /* used the P83 pin as port */
-#define _80_PFSEG15_SEG                   (0x80U) /* used the P83 pin as segment output */
-
-/*
-    LCD port function registers (PFSEG3) 
-*/
-/* Port (other than segment output)/segment outputs specification of P70 pins (PFSEG16) */
-#define _00_PFSEG16_PORT                  (0x00U) /* used the P70 pin as port */
-#define _01_PFSEG16_SEG                   (0x01U) /* used the P70 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P71 pins (PFSEG17) */
-#define _00_PFSEG17_PORT                  (0x00U) /* used the P71 pin as port */
-#define _02_PFSEG17_SEG                   (0x02U) /* used the P71 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P72 pins (PFSEG18) */
-#define _00_PFSEG18_PORT                  (0x00U) /* used the P72 pin as port */
-#define _04_PFSEG18_SEG                   (0x04U) /* used the P72 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P73 pins (PFSEG19) */
-#define _00_PFSEG19_PORT                  (0x00U) /* used the P73 pin as port */
-#define _08_PFSEG19_SEG                   (0x08U) /* used the P73 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P74 pins (PFSEG20) */
-#define _00_PFSEG20_PORT                  (0x00U) /* used the P74 pin as port */
-#define _10_PFSEG20_SEG                   (0x10U) /* used the P74 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P75 pins (PFSEG21) */
-#define _00_PFSEG21_PORT                  (0x00U) /* used the P75 pin as port */
-#define _20_PFSEG21_SEG                   (0x20U) /* used the P75 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P76 pins (PFSEG22) */
-#define _00_PFSEG22_PORT                  (0x00U) /* used the P76 pin as port */
-#define _40_PFSEG22_SEG                   (0x40U) /* used the P76 pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P77 pins (PFSEG23) */
-#define _00_PFSEG23_PORT                  (0x00U) /* used the P77 pin as port */
-#define _80_PFSEG23_SEG                   (0x80U) /* used the P77 pin as segment output */
-
-/*
-    LCD port function registers (PFSEG4) 
-*/
-/* Port (other than segment output)/segment outputs specification of P30 pins (PFSEG24) */
-#define _00_PFSEG24_PORT                  (0x00U) /* used the P30(100-pin) pin as port */
-#define _01_PFSEG24_SEG                   (0x01U) /* used the P30(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P31 pins (PFSEG25) */
-#define _00_PFSEG25_PORT                  (0x00U) /* used the P31(100-pin) pin as port */
-#define _02_PFSEG25_SEG                   (0x02U) /* used the P31(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P32 pins (PFSEG26) */
-#define _00_PFSEG26_PORT                  (0x00U) /* used the P32(100-pin) pin as port */
-#define _04_PFSEG26_SEG                   (0x04U) /* used the P32(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P33 pins (PFSEG27) */
-#define _00_PFSEG27_PORT                  (0x00U) /* used the P33(100-pin) pin as port */
-#define _08_PFSEG27_SEG                   (0x08U) /* used the P33(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P34 pins (PFSEG28) */
-#define _00_PFSEG28_PORT                  (0x00U) /* used the P34(100-pin) pin as port */
-#define _10_PFSEG28_SEG                   (0x10U) /* used the P34(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P35 pins (PFSEG29) */
-#define _00_PFSEG29_PORT                  (0x00U) /* used the P35(100-pin) pin as port */
-#define _20_PFSEG29_SEG                   (0x20U) /* used the P35(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P36 pins (PFSEG30) */
-#define _00_PFSEG30_PORT                  (0x00U) /* used the P36(100-pin) pin as port */
-#define _40_PFSEG30_SEG                   (0x40U) /* used the P36(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P37 pins (PFSEG31) */
-#define _00_PFSEG31_PORT                  (0x00U) /* used the P37(100-pin) pin as port */
-#define _80_PFSEG31_SEG                   (0x80U) /* used the P37(100-pin) pin as segment output */
-
-/*
- 	LCD port function registers (PFSEG5) 
-*/
-/* Port (other than segment output)/segment outputs specification of P50 pins (PFSEG32) */
-#define _00_PFSEG32_PORT                  (0x00U) /* used the P50(100-pin) pin as port */
-#define _01_PFSEG32_SEG                   (0x01U) /* used the P50(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P51 pins (PFSEG33) */
-#define _00_PFSEG33_PORT                  (0x00U) /* used the P51(100-pin) pin as port */
-#define _02_PFSEG33_SEG                   (0x02U) /* used the P51(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P52 pins (PFSEG34) */
-#define _00_PFSEG34_PORT                  (0x00U) /* used the P52(100-pin) pin as port */
-#define _04_PFSEG34_SEG                   (0x04U) /* used the P52(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P53 pins (PFSEG35) */
-#define _00_PFSEG35_PORT                  (0x00U) /* used the P53(100-pin) pin as port */
-#define _08_PFSEG35_SEG                   (0x08U) /* used the P53(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P54 pins (PFSEG36) */
-#define _00_PFSEG36_PORT                  (0x00U) /* used the P54(100-pin) pin as port */
-#define _10_PFSEG36_SEG                   (0x10U) /* used the P54(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P55 pins (PFSEG37) */
-#define _00_PFSEG37_PORT                  (0x00U) /* used the P55(100-pin) pin as port */
-#define _20_PFSEG37_SEG                   (0x20U) /* used the P55(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P56 pins (PFSEG38) */
-#define _00_PFSEG38_PORT                  (0x00U) /* used the P56(100-pin) pin as port */
-#define _40_PFSEG38_SEG                   (0x40U) /* used the P56(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P57 pins (PFSEG39) */
-#define _00_PFSEG39_PORT                  (0x00U) /* used the P57(100-pin) pin as port */
-#define _80_PFSEG39_SEG                   (0x80U) /* used the P57(100-pin) pin as segment output */
-
-/*
- 	LCD port function registers (PFSEG6) 
-*/
-/* Port (other than segment output)/segment outputs specification of P84 pins (PFSEG40) */
-#define _00_PFSEG40_PORT                  (0x00U) /* used the P84(100-pin) pin as port */
-#define _01_PFSEG40_SEG                   (0x01U) /* used the P84(100-pin) pin as segment output */
-/* Port (other than segment output)/segment outputs specification of P85 pins (PFSEG41) */
-#define _00_PFSEG41_PORT                  (0x00U) /* used the P85(100-pin) pin as port */
-#define _02_PFSEG41_SEG                   (0x02U) /* used the P85(100-pin) pin as segment output */
 /*
     LCD input switch control register (ISCLCD) 
 */
@@ -381,17 +373,14 @@ Macro definitions (Register bit)
 /***********************************************************************************************************************
 Macro definitions
 ***********************************************************************************************************************/
+#define _C0_PMC2_DEFAULT_VALUE            (0xC0U) /* PMC2 default value */
 #define _03_PM0_DEFAULT_VALUE             (0x03U) /* PM0 default value */
-#define _F0_PM2_DEFAULT_VALUE             (0xF0U) /* PM2 default value */
-#define _F0_PM3_DEFAULT_VALUE             (0xF0U) /* PM3 default value */
-#define _FC_PM4_DEFAULT_VALUE             (0xFCU) /* PM4 default value */
-#define _9F_PM5_DEFAULT_VALUE             (0x9FU) /* PM5 default value */
+#define _C0_PM2_DEFAULT_VALUE             (0xC0U) /* PM2 default value */
+#define _F2_PM4_DEFAULT_VALUE             (0xF2U) /* PM4 default value */
 #define _F8_PM6_DEFAULT_VALUE             (0xF8U) /* PM6 default value */
-#define _F0_PM8_DEFAULT_VALUE             (0xF0U) /* PM8 default value */
+#define _C0_PM8_DEFAULT_VALUE             (0xC0U) /* PM8 default value */
 #define _1F_PM12_DEFAULT_VALUE            (0x1FU) /* PM12 default value */
 #define _F8_PM15_DEFAULT_VALUE            (0xF8U) /* PM15 default value */
-#define _F0_PFSEG3_DEFAULT_VALUE          (0xF0U) /* PFSEG3 default value */
-#define _C0_PFSEG4_DEFAULT_VALUE          (0xC0U) /* PFSEG4 default value */
 
 /***********************************************************************************************************************
 Typedef definitions

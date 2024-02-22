@@ -212,19 +212,19 @@ Macro definitions
     ***************************************************************************/
     /* I/Fs Mapping 
      *      Macro Name / I/Fs                                   Setting/Description */
-    #define EM_PULSE_ACTIVE_ON_STATEMENT                              {SET_BIT(P0,2,0);}              /* Pulse 0 LED On */
-    #define EM_PULSE_ACTIVE_OFF_STATEMENT                             {SET_BIT(P0,2,1);}              /* Pulse 0 LED Off */
+    #define EM_PULSE_ACTIVE_ON_STATEMENT                              {SET_BIT(P0,2,1);}              /* Pulse 0 LED On */
+    #define EM_PULSE_ACTIVE_OFF_STATEMENT                             {SET_BIT(P0,2,0);}              /* Pulse 0 LED Off */
    
    #if (EM_SW_PROPERTY_OPERATION_PULSE_REACTIVE_ENABLE) /* USING REACTIVE PULSE*/
-        #define EM_PULSE_REACTIVE_ON_STATEMENT                        {SET_BIT(P4,3,0);}        /* Pulse 1 LED On */
-        #define EM_PULSE_REACTIVE_OFF_STATEMENT                       {SET_BIT(P4,3,1);}        /* Pulse 1 LED Off */
+        #define EM_PULSE_REACTIVE_ON_STATEMENT                        {SET_BIT(P4,3,1);}        /* Pulse 1 LED On */
+        #define EM_PULSE_REACTIVE_OFF_STATEMENT                       {SET_BIT(P4,3,0);}        /* Pulse 1 LED Off */
         #define EM_PULSE_APPARENT_ON_STATEMENT                        {;}                       /* Pulse 2 LED On */
         #define EM_PULSE_APPARENT_OFF_STATEMENT                       {;}                       /* Pulse 2 LED Off */  
     #else /* USING APPARENT PULSE*/
         #define EM_PULSE_REACTIVE_ON_STATEMENT                        {;}        /* Pulse 1 LED On */
         #define EM_PULSE_REACTIVE_OFF_STATEMENT                       {;}        /* Pulse 1 LED Off */
-        #define EM_PULSE_APPARENT_ON_STATEMENT                        {SET_BIT(P4,3,0);}        /* Pulse 2 LED On */
-        #define EM_PULSE_APPARENT_OFF_STATEMENT                       {SET_BIT(P4,3,1);}        /* Pulse 2 LED Off */
+        #define EM_PULSE_APPARENT_ON_STATEMENT                        {SET_BIT(P4,3,1);}        /* Pulse 2 LED On */
+        #define EM_PULSE_APPARENT_OFF_STATEMENT                       {SET_BIT(P4,3,0);}        /* Pulse 2 LED Off */
     #endif /* EM_SW_PROPERTY_OPERATION_PULSE_REACTIVE_ENABLE */
 
     #define EM_PULSE_DriverInit()                               {;}                             /* Pulse Init */        

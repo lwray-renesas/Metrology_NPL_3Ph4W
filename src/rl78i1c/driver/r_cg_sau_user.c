@@ -33,6 +33,7 @@ Includes
 #include "r_cg_sau.h"
 /* Start user code for include. Do not edit comment generated here */
 #include "wrp_user_uart.h"
+#include "r_cg_wdt.h"
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -53,6 +54,16 @@ extern volatile uint8_t * gp_uart1_rx_address;         /* uart1 receive buffer a
 extern volatile uint16_t  g_uart1_rx_count;            /* uart1 receive data number */
 extern volatile uint16_t  g_uart1_rx_length;           /* uart1 receive data length */
 /* Start user code for global. Do not edit comment generated here */
+
+static volatile uint8_t tx_done = 0x01U;
+
+/** @brief sends the SPI via simple polling of interrupt flags (doesn't use isr)
+ * @param tx_buf - pointer to data to send
+ * @param tx_num - number of bytes to send
+ */
+static void Simple_polling_send(const uint8_t * const tx_buf, uint16_t tx_num);
+
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -182,4 +193,63 @@ static void r_uart1_callback_error(uint8_t err_type)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
+
+void R_CSI00_Start_app(void)
+{
+    SO0 &= (uint16_t)~(_0100_SAUm_CH0_CLOCK_OUTPUT_1);
+    SO0 &= (uint16_t)~(_0001_SAUm_CH0_DATA_OUTPUT_1);
+    SOE0 |= _0001_SAUm_CH0_OUTPUT_ENABLE;
+    SS0 |= _0001_SAUm_CH0_START_TRG_ON;
+    CSIIF00 = 0U;   /* clear INTCSI00 interrupt flag */
+	CSIMK00 = 1U;    /* disable INTCSI00 interrupt */
+}
+/* END OF FUNCTION*/
+
+void R_CSI00_Send_app(const uint8_t * const tx_buf, uint16_t tx_num)
+{
+	const uint8_t * l_tx_buf = tx_buf;
+	uint16_t l_tx_num = tx_num;
+
+	/* Wait for previous transmission to complete*/
+	while(0x00U == tx_done)
+	{
+		NOP();
+	}
+
+	Simple_polling_send(l_tx_buf, l_tx_num);
+}
+/* END OF FUNCTION*/
+
+static void Simple_polling_send(const uint8_t * const tx_buf, uint16_t tx_num)
+{
+	uint16_t l_tx_num = tx_num;
+	const uint8_t * l_tx_buf = tx_buf;
+
+	CSIMK00 = 1U;    /* disable INTCSI00 interrupt */
+	CSIIF00 = 0U;    /* clear INTCSI00 interrupt flag */
+
+	tx_done = 0x00U;
+
+	while(l_tx_num > 0U)
+	{
+		SIO00 = *l_tx_buf;
+
+		l_tx_num--;
+		l_tx_buf++;
+
+		/* Wait for the interrupt flag to set*/
+		while(0U == CSIIF00)
+		{
+			R_WDT_Restart();
+			NOP();
+		}
+
+		CSIIF00 = 0U;
+	}
+
+	tx_done = 0x01U;
+}
+/* END OF FUNCTION*/
+
+
 /* End user code. Do not edit comment generated here */

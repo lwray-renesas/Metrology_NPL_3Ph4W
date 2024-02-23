@@ -308,7 +308,7 @@ Macro definitions
     #define EM_ADC_DriverSetPhaseStep(channel, step)            R_DSADC_AdjustPhaseDelay(channel, step) /* AD Driver Set Phase Steps   */
 
 #ifdef __DEBUG
-#define EM_ADC_MAX_DEBUG_SAMPLE         (140)
+#define EM_ADC_MAX_DEBUG_SAMPLE         (8)
 #endif
 
 /***********************************************************************************************************************

@@ -8,6 +8,8 @@
   <Project Name="Metrology_NPL_3Ph4W" Type="Application">
     <Files>
       <Category Name="doc">
+        <Path>doc\20231023_3PH4W_Skeleton_Metrology_Software_User_Guide.pdf</Path>
+        <Path>doc\20231101_RL78I1C_Metrology_Preliminary_User Manual_Rev5.03_ EM_3P4W.pdf</Path>
         <Path>doc\C14115_RENESAS_3-PHASE_PMOD_512K_V1.0_Schematics_07-11-23.pdf</Path>
         <Path>doc\MDT0096A2IS-SPI_DISPLAY_MEZZANINE_V1.0_Schematics_07-11-23.pdf</Path>
       </Category>
@@ -43,6 +45,35 @@
             <Category Name="event">
               <Path>src\rl78i1c\application\event\em_event.c</Path>
               <Path>src\rl78i1c\application\event\em_event.h</Path>
+            </Category>
+            <Category Name="gfx">
+              <Path>src\rl78i1c\application\gfx\gfx.h</Path>
+              <Category Name="src">
+                <Path>src\rl78i1c\application\gfx\src\gfx.c</Path>
+                <Path>src\rl78i1c\application\gfx\src\images.h</Path>
+                <Category Name="display">
+                  <Category Name="assert">
+                    <Path>src\rl78i1c\application\gfx\src\display\assert\display_assert.h</Path>
+                  </Category>
+                  <Category Name="draw">
+                    <Path>src\rl78i1c\application\gfx\src\display\draw\draw.c</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\draw\draw.h</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\draw\draw_driver.h</Path>
+                  </Category>
+                  <Category Name="driver">
+                    <Path>src\rl78i1c\application\gfx\src\display\driver\st7735s.c</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\driver\st7735s.h</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\driver\st7735s_port.h</Path>
+                  </Category>
+                  <Category Name="text">
+                    <Path>src\rl78i1c\application\gfx\src\display\text\font.c</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\text\font.h</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\text\text.c</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\text\text.h</Path>
+                    <Path>src\rl78i1c\application\gfx\src\display\text\text_driver.h</Path>
+                  </Category>
+                </Category>
+              </Category>
             </Category>
             <Category Name="inst_read">
               <Path>src\rl78i1c\application\inst_read\inst_read.c</Path>
@@ -98,6 +129,9 @@
             <Path>src\rl78i1c\driver\r_cg_iica.c</Path>
             <Path>src\rl78i1c\driver\r_cg_iica.h</Path>
             <Path>src\rl78i1c\driver\r_cg_iica_user.c</Path>
+            <Path>src\rl78i1c\driver\r_cg_lvd.c</Path>
+            <Path>src\rl78i1c\driver\r_cg_lvd.h</Path>
+            <Path>src\rl78i1c\driver\r_cg_lvd_user.c</Path>
             <Path>src\rl78i1c\driver\r_cg_mac32bit.c</Path>
             <Path>src\rl78i1c\driver\r_cg_mac32bit.h</Path>
             <Path>src\rl78i1c\driver\r_cg_mac32bit_user.c</Path>
@@ -200,6 +234,13 @@
           <Option>-c</Option>
           <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\assert"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\text"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\draw"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\driver"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</Option>
@@ -244,7 +285,7 @@
           <Option>-o ${workspace_loc}\${ProjName}/${ConfigName}</Option>
           <Option>-merge_string</Option>
           <Option>-signed_char</Option>
-          <Option>-lang=c</Option>
+          <Option>-lang=c99</Option>
         </CompileOptions>
         <AssembleOptions>
           <Option>-cpu=S3</Option>
@@ -264,7 +305,7 @@
           <Option>-auto_section_layout</Option>
           <Option>-security_id=0</Option>
           <Option>-debug_monitor=7FE00-7FFFF</Option>
-          <Option>-user_opt_byte=7E3BE0</Option>
+          <Option>-user_opt_byte=7EFFE0</Option>
           <Option>-ocdbg=84</Option>
           <Option>-self</Option>
           <Option>-output="${ProjName}.abs"</Option>
@@ -276,7 +317,7 @@
           <Option>-nologo</Option>
           <Option>-change_message=information</Option>
           <Option>-total_size</Option>
-          <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4s.lib"</Option>
+          <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4s99.lib"</Option>
           <Option>-library="C:\Program Files (x86)\Renesas\RL78\1_12_1\lib\rl78em4r.lib"</Option>
           <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/flash/fdl/CCRL/librl78/pfdl.lib"</Option>
           <Option>-library="${ProjDirPath}/../../../../../../../../../Dev/Temporary/SCRATCH/${ProjName}/src/shared/metrology/filter/CCRL/hpf16_rl78_s3_ccrl_m.lib"</Option>
@@ -307,6 +348,11 @@
           <Path>Debug_CT\src/rl78i1c/application/debug/loadtest\load_test.obj</Path>
           <Path>Debug_CT\src/rl78i1c/application/eeprom\eeprom.obj</Path>
           <Path>Debug_CT\src/rl78i1c/application/event\em_event.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/application/gfx/src/display/draw\draw.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/application/gfx/src/display/driver\st7735s.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/application/gfx/src/display/text\font.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/application/gfx/src/display/text\text.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/application/gfx/src\gfx.obj</Path>
           <Path>Debug_CT\src/rl78i1c/application/inst_read\inst_read.obj</Path>
           <Path>Debug_CT\src/rl78i1c/application/startup\platform.obj</Path>
           <Path>Debug_CT\src/rl78i1c/application/startup\startup.obj</Path>
@@ -328,6 +374,8 @@
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_elc_user.obj</Path>
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_iica.obj</Path>
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_iica_user.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/driver\r_cg_lvd.obj</Path>
+          <Path>Debug_CT\src/rl78i1c/driver\r_cg_lvd_user.obj</Path>
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_mac32bit.obj</Path>
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_mac32bit_user.obj</Path>
           <Path>Debug_CT\src/rl78i1c/driver\r_cg_port.obj</Path>
@@ -352,6 +400,13 @@
           <Path>Debug_CT\src/rl78i1c\main.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\assert"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\text"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\draw"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\driver"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</IncludePathForC>
@@ -401,6 +456,13 @@
           <Option>-c</Option>
           <Option>-dev="C:/Users/a5126135/.eclipse/com.renesas.platform_2061004092/DebugComp/RL78/RL78/Common/DR5F10NPL.DVF"</Option>
           <Option>-no_warning_num=20174,20177,20550,20494,20186</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\assert"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\text"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\draw"</Option>
+          <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\driver"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</Option>
           <Option>-I "${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</Option>
@@ -466,7 +528,7 @@
           <Option>-auto_section_layout</Option>
           <Option>-security_id=0</Option>
           <Option>-debug_monitor=7FE00-7FFFF</Option>
-          <Option>-user_opt_byte=7E7FE0</Option>
+          <Option>-user_opt_byte=7E55E0</Option>
           <Option>-ocdbg=04</Option>
           <Option>-self</Option>
           <Option>-output="${ProjName}.abs"</Option>
@@ -509,6 +571,11 @@
           <Path>Release_CT\src/rl78i1c/application/debug/loadtest\load_test.obj</Path>
           <Path>Release_CT\src/rl78i1c/application/eeprom\eeprom.obj</Path>
           <Path>Release_CT\src/rl78i1c/application/event\em_event.obj</Path>
+          <Path>Release_CT\src/rl78i1c/application/gfx/src/display/draw\draw.obj</Path>
+          <Path>Release_CT\src/rl78i1c/application/gfx/src/display/driver\st7735s.obj</Path>
+          <Path>Release_CT\src/rl78i1c/application/gfx/src/display/text\font.obj</Path>
+          <Path>Release_CT\src/rl78i1c/application/gfx/src/display/text\text.obj</Path>
+          <Path>Release_CT\src/rl78i1c/application/gfx/src\gfx.obj</Path>
           <Path>Release_CT\src/rl78i1c/application/inst_read\inst_read.obj</Path>
           <Path>Release_CT\src/rl78i1c/application/startup\platform.obj</Path>
           <Path>Release_CT\src/rl78i1c/application/startup\startup.obj</Path>
@@ -530,6 +597,8 @@
           <Path>Release_CT\src/rl78i1c/driver\r_cg_elc_user.obj</Path>
           <Path>Release_CT\src/rl78i1c/driver\r_cg_iica.obj</Path>
           <Path>Release_CT\src/rl78i1c/driver\r_cg_iica_user.obj</Path>
+          <Path>Release_CT\src/rl78i1c/driver\r_cg_lvd.obj</Path>
+          <Path>Release_CT\src/rl78i1c/driver\r_cg_lvd_user.obj</Path>
           <Path>Release_CT\src/rl78i1c/driver\r_cg_mac32bit.obj</Path>
           <Path>Release_CT\src/rl78i1c/driver\r_cg_mac32bit_user.obj</Path>
           <Path>Release_CT\src/rl78i1c/driver\r_cg_port.obj</Path>
@@ -554,6 +623,13 @@
           <Path>Release_CT\src/rl78i1c\main.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\assert"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\text"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\draw"</IncludePathForC>
+          <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\gfx\src\display\driver"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\shared"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\event"</IncludePathForC>
           <IncludePathForC>"${ProjDirPath}\..\..\..\..\..\..\..\..\..\Dev\Temporary\SCRATCH\${ProjName}\src\rl78i1c\application\calibration"</IncludePathForC>

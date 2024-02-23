@@ -32,6 +32,7 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_tau.h"
 /* Start user code for include. Do not edit comment generated here */
+#include "r_cg_wdt.h"
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -125,6 +126,13 @@ void R_TAU0_Create(void)
     TO0 &= (uint16_t)~_0008_TAU_CH3_OUTPUT_VALUE_1;
     TOE0 &= (uint16_t)~_0008_TAU_CH3_OUTPUT_ENABLE;
     NFEN1 &= (uint8_t)~_08_TAU_CH3_NOISE_ON;
+    /* Channel 4 used as interval timer */
+    TMR04 = _C000_TAU_CLOCK_SELECT_CKM3 | _0000_TAU_CLOCK_MODE_CKS | _0000_TAU_TRIGGER_SOFTWARE |
+            _0000_TAU_MODE_INTERVAL_TIMER | _0000_TAU_START_INT_UNUSED;
+    TDR04 = 0x0U;
+    TOM0 &= (uint16_t)~_0010_TAU_CH4_SLAVE_OUTPUT;
+    TO0 &= (uint16_t)~_0010_TAU_CH4_OUTPUT_VALUE_1;
+    TOE0 &= (uint16_t)~_0010_TAU_CH4_OUTPUT_ENABLE;
 }
 /***********************************************************************************************************************
 * Function Name: R_TAU0_Channel0_Start
@@ -265,6 +273,29 @@ void R_TAU0_Channel3_Start_value(uint16_t us)
     TMIF03 = 0U;    /* clear INTTM03 interrupt flag */
     TMMK03 = 0U;    /* enable INTTM03 interrupt */
     TS0 |= _0008_TAU_CH3_START_TRG_ON;
+}
+
+void R_TAU0_Channel4_ms_delay(uint16_t ms)
+{
+	if(ms > 0U)
+	{
+		TDR04 = (ms > 1U) ? (ms << 2U)-1U : 0U;
+
+		TMMK04 = 1U;    /* disable INTTM02 interrupt */
+		TMIF04 = 0U;    /* clear INTTM02 interrupt flag */
+
+		TS0 |= _0010_TAU_CH4_START_TRG_ON;
+
+		while(0U == TMIF04)
+		{
+			R_WDT_Restart();
+			NOP();
+		}
+
+		TT0 |= _0010_TAU_CH4_STOP_TRG_ON;
+
+		TMIF04 = 0U;    /* clear INTTM02 interrupt flag */
+	}
 }
 
 /* End user code. Do not edit comment generated here */

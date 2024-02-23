@@ -294,6 +294,7 @@ commonly supplied to each channel. (SPSm)
 /***********************************************************************************************************************
 Macro definitions
 ***********************************************************************************************************************/
+#define _0200_SAU0_CH0_BAUDRATE_DIVISOR         (0x0200U) /* transfer clock set by dividing the operating clock */
 #define _9A00_SAU0_CH2_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
 #define _9A00_SAU0_CH3_BAUDRATE_DIVISOR         (0x9A00U) /* transfer clock set by dividing the operating clock */
 #define _0020_SMR00_DEFAULT_VALUE               (0x0020U) /* SMR00 default value */
@@ -317,12 +318,19 @@ void R_UART1_Start(void);
 void R_UART1_Stop(void);
 MD_STATUS R_UART1_Send(uint8_t * const tx_buf, uint16_t tx_num);
 MD_STATUS R_UART1_Receive(uint8_t * const rx_buf, uint16_t rx_num);
+void R_CSI00_Create(void);
+void R_CSI00_Start(void);
+void R_CSI00_Stop(void);
+MD_STATUS R_CSI00_Send(uint8_t * const tx_buf, uint16_t tx_num);
 static void r_uart1_callback_receiveend(void);
 static void r_uart1_callback_sendend(void);
 static void r_uart1_callback_error(uint8_t err_type);
 static void r_uart1_callback_softwareoverrun(uint16_t rx_data);
+static void r_csi00_callback_sendend(void);
 /* Start user code for function. Do not edit comment generated here */
 void R_UART1_Start_Reception(void);
 void R_UART1_Stop_Reception(void);
+void R_CSI00_Start_app(void);
+void R_CSI00_Send_app(const uint8_t * const tx_buf, uint16_t tx_num);
 /* End user code. Do not edit comment generated here */
 #endif

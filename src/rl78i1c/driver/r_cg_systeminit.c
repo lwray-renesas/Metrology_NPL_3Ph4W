@@ -42,6 +42,7 @@ Includes
 #include "r_cg_12adc.h"
 #include "r_cg_dtc.h"
 #include "r_cg_elc.h"
+#include "r_cg_lvd.h"
 /* Start user code for include. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
@@ -94,7 +95,7 @@ __root const __far uint8_t debugmon1[10] =
 ***********************************************************************************************************************/
 void R_Systeminit(void)
 {
-    PIOR0 = 0x00U;
+    PIOR0 = 0x02U;
     R_PORT_Create();
     R_CGC_Create();
     R_TAU0_Create();
@@ -107,6 +108,7 @@ void R_Systeminit(void)
     R_12ADC_Create();
     R_DTC_Create();
     R_ELC_Create();
+    R_LVD_Create();
     IAWCTL = 0x80U;
 }
 

@@ -396,5 +396,6 @@ void R_TAU0_Channel3_Stop(void);
 void R_TAU0_Channel1_SetValue(uint16_t reg_value);
 uint8_t R_TAU0_IsChannelRunning(TAU_CHANNEL_T channel);
 void R_TAU0_Channel3_Start_value(uint16_t us);
+void R_TAU0_Channel4_ms_delay(uint16_t ms);
 /* End user code. Do not edit comment generated here */
 #endif

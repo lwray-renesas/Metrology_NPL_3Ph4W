@@ -34,6 +34,7 @@ Includes   <System Includes> , "Project Includes"
 #include "r_cg_rtc.h"           /* RTC Driver */
 #include "r_cg_dsadc.h"         /* DSAD Driver */
 #include "r_cg_wdt.h"           /* WDT Driver */
+#include "r_cg_lvd.h"
 
 /* Wrapper */
 #include "wrp_em_sw_config.h"   /* EM Software Config */
@@ -156,6 +157,7 @@ static uint8_t COMMAND_InvokeCalibration(uint8_t *arg_str);                     
 static uint8_t COMMAND_InvokeGetCalibration(uint8_t *arg_str);                  /* Get Calibration Info */
 static uint8_t COMMAND_InvokeSetConfig(uint8_t *arg_str);                       /* Set configuration */
 static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str);                         /* Measure CPU Load */
+static uint8_t COMMAND_InvokeVddCheck(uint8_t *arg_str);                        /* Measure VDD Range using LVD */
 
 /* Command Table */
 static const COMMAND_ITEM   cmd_table[] = 
@@ -186,6 +188,7 @@ static const COMMAND_ITEM   cmd_table[] =
 		{(const uint8_t *)"getcalib"        ,   (const uint8_t *)""                         				,   (const uint8_t *)"Prints Calibration Coefficients"                  			,   COMMAND_InvokeGetCalibration               },
 		{(const uint8_t *)"setconfig"       ,   (const uint8_t *)"get:leave empty; set:1 later follow guide",   (const uint8_t *)"Manually set configuration"                                   ,   COMMAND_InvokeSetConfig                 },
 		{(const uint8_t *)"cpuload"         ,   (const uint8_t *)""                                         ,   (const uint8_t *)"Measure the CPU Load"                                         ,   COMMAND_InvokeCPULoad                   },
+		{(const uint8_t *)"vddcheck"        ,   (const uint8_t *)""                                         ,   (const uint8_t *)"Return VDD Range, According to LVD"                           ,   COMMAND_InvokeVddCheck                   },
 };
 
 static const uint8_t * g_mem_epr = (const uint8_t *)"EEPROM";
@@ -2699,6 +2702,23 @@ static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str)
 	CMD_Printf((uint8_t *)"\n\r No support. please turn on the macro METER_ENABLE_MEASURE_CPU_LOAD! \n\r ");
 #endif
 
+
+	return 0;
+}
+
+/******************************************************************************
+ * Function Name   : COMMAND_InvokeVddCheck
+ * Interface       : static void COMMAND_InvokeVddCheck(uint8_t *arg_str)
+ * Description     : Command Invoke VDD check on LVD
+ * Arguments       : uint8_t * arg_str: Arguments string
+ * Function Calls  : None
+ * Return Value    : None
+ ******************************************************************************/
+static uint8_t COMMAND_InvokeVddCheck(uint8_t *arg_str)
+{
+	CMD_Printf((uint8_t*)"\n\rVDD Status: ");
+	CMD_Printf((uint8_t*)R_LVD_range_to_str(R_LVD_Check()));
+	CMD_SendString((uint8_t *)"\n\r");
 
 	return 0;
 }

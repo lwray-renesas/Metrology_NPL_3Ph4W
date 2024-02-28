@@ -135,7 +135,7 @@ extern const uint8_t FAR_PTR g_em_lib_compiler[];
 extern const uint8_t FAR_PTR g_em_lib_build_date[];
 static char version_buffer[48];
 
-static char code_buffer[128];
+static char code_buffer[48];
 
 /***********************************************************************************************************************
 * Function Name    : static uint8_t config_data_load(EM_CALIBRATION * p_calib, st_em_setting_t * p_em_setting)
@@ -226,7 +226,7 @@ uint8_t start_peripheral_and_app(void)
     DEBUG_Printf((uint8_t *)line_break);
     DEBUG_Printf((uint8_t *)param_intro, " ", "Energy Meter Start-up", " ");
     DEBUG_Printf((uint8_t *)line_break);
-    DEBUG_Printf((uint8_t *)param_intro, " ", "RL78/I1C 3PH4W CT PMOD", " ");
+    DEBUG_Printf((uint8_t *)param_intro, " ", "RL78/I1C -512k 3PH4W CT PMOD", " ");
     DEBUG_Printf((uint8_t *)line_break);
     DEBUG_Printf((uint8_t *)param_intro, " ", app_build_date_str, " ");
     DEBUG_Printf((uint8_t *)line_break);
@@ -381,6 +381,7 @@ uint8_t start_peripheral_and_app(void)
 	/* Output Renesas Logo*/
 	Gfx_erase_background();
 	Gfx_set_background_title();
+
 	/* Say Hello*/
 	Gfx_write_string(BACKGROUND_X_START+5U, BACKGROUND_Y_START+5U, "Hello, World!");
 	/* force display to update*/

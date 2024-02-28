@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Configs>
-    <History/>
+    <History>
+        <Keyword>rcr2</Keyword>
+        <Keyword>CKSEL</Keyword>
+        <Keyword>SCSC</Keyword>
+        <Keyword>RCR2</Keyword>
+        <Keyword>RTCPORSR</Keyword>
+        <Keyword>LVDVRTCF</Keyword>
+        <Keyword>RESF</Keyword>
+        <Keyword>VRTCEN</Keyword>
+        <Keyword>RCR5</Keyword>
+        <Keyword>RCR1</Keyword>
+    </History>
 </Configs>

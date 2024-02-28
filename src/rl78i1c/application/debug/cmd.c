@@ -107,7 +107,7 @@ Macro definitions
 #define CMD_KEY_CTRL_SPACE      0x00    /* CTRL+SPACE key code */
 #define CMD_KEY_CTRL_C          0x03    /* CTRL+C key code */
 
-#define CMD_BUF_SIZE            64      /* Each CMD is 64 bytes */
+#define CMD_BUF_SIZE            32      /* Each CMD is 32 bytes */
 #define CMD_LAST_CMD_LENGTH     10      /* Number of CMD to remember */
 
 /* VT100 */

@@ -227,7 +227,7 @@
     </Files>
     <Device Category="com.renesas.cdt.managedbuild.renesas.ccrl.common.option.cpu.s3" Series="RL78">R5F10NPL</Device>
     <BuildOptions Name="CC-RL" Version="v1.12.01">
-      <BuildMode Active="True" Name="Debug_CT">
+      <BuildMode Active="False" Name="Debug_CT">
         <GeneralOptions/>
         <CompileOptions>
           <Option>-cpu=S3</Option>
@@ -449,7 +449,7 @@
           <MacroForC>__DEBUG</MacroForC>
         </CommonOptions>
       </BuildMode>
-      <BuildMode Active="False" Name="Debug_CT_NO_DISPLAY">
+      <BuildMode Active="True" Name="Debug_CT_NO_DISPLAY">
         <GeneralOptions/>
         <CompileOptions>
           <Option>-cpu=S3</Option>

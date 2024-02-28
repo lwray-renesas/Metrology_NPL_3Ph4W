@@ -118,6 +118,10 @@ extern uint8_t DATAFLASH_InternalRead(uint32_t addr, uint8_t* buf, uint16_t size
 extern volatile uint16_t g_wrp_sample_count;
 extern int16_t  g_wrp_sample_int16[6][EM_ADC_MAX_DEBUG_SAMPLE];
 extern int32_t  g_wrp_sample_int32[4][EM_ADC_MAX_DEBUG_SAMPLE];
+extern EM_SW_SAMP_TYPE phase1_inversion_flag;
+extern EM_SW_SAMP_TYPE phase2_inversion_flag;
+extern EM_SW_SAMP_TYPE phase3_inversion_flag;
+extern EM_SW_SAMP_TYPE neutral_inversion_flag;
 
 /******************************************************************************
 Exported global variables and functions (to be accessed by other files)
@@ -158,6 +162,7 @@ static uint8_t COMMAND_InvokeGetCalibration(uint8_t *arg_str);                  
 static uint8_t COMMAND_InvokeSetConfig(uint8_t *arg_str);                       /* Set configuration */
 static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str);                         /* Measure CPU Load */
 static uint8_t COMMAND_InvokeVddCheck(uint8_t *arg_str);                        /* Measure VDD Range using LVD */
+static uint8_t COMMAND_InvokeInvertPolarity(uint8_t *arg_str);                  /* Inverts Polarity on current channel */
 
 /* Command Table */
 static const COMMAND_ITEM   cmd_table[] = 
@@ -189,6 +194,7 @@ static const COMMAND_ITEM   cmd_table[] =
 		{(const uint8_t *)"setconfig"       ,   (const uint8_t *)"get:leave empty; set:1 later follow guide",   (const uint8_t *)"Manually set configuration"                                   ,   COMMAND_InvokeSetConfig                 },
 		{(const uint8_t *)"cpuload"         ,   (const uint8_t *)""                                         ,   (const uint8_t *)"Measure the CPU Load"                                         ,   COMMAND_InvokeCPULoad                   },
 		{(const uint8_t *)"vddcheck"        ,   (const uint8_t *)""                                         ,   (const uint8_t *)"Return VDD Range, According to LVD"                           ,   COMMAND_InvokeVddCheck                   },
+		{(const uint8_t *)"invertpolarity"  ,   (const uint8_t *)"channel (1, 2, 3, 4)"                     ,   (const uint8_t *)"Inverts ADC readings (multiply by -1) on given channel"       ,   COMMAND_InvokeInvertPolarity                   },
 };
 
 static const uint8_t * g_mem_epr = (const uint8_t *)"EEPROM";
@@ -1569,10 +1575,10 @@ static uint8_t COMMAND_InvokeSetRtc(uint8_t *arg_str)
 static uint8_t COMMAND_InvokeGetEnergyLog(uint8_t *arg_str)
 {
 	EM_EEPROM_ENERGY_LOG l_debug_energy_log;
-    EM_ENERGY_VALUE em_energy_value;
+	EM_ENERGY_VALUE em_energy_value;
 
 	(void)STORAGE_EM_GetEnergyData(&l_debug_energy_log);
-    EM_EnergyDataToEnergyValue(&(l_debug_energy_log.energy_data), &em_energy_value);
+	EM_EnergyDataToEnergyValue(&(l_debug_energy_log.energy_data), &em_energy_value);
 
 	CMD_Printf((uint8_t *)"\n\rRTC Time: %02x/%02x/20%x %02x:%02x:%02x Week: %02x\n\r",
 			l_debug_energy_log.time_stamp.day,
@@ -2513,53 +2519,53 @@ static uint8_t COMMAND_InvokeCalibration(uint8_t *arg_str)
 
 static uint8_t COMMAND_InvokeGetCalibration(uint8_t *arg_str)
 {
-    EM_CALIBRATION calib;
+	EM_CALIBRATION calib;
 	(void)arg_str;
 
-    calib = EM_GetCalibInfo();
+	calib = EM_GetCalibInfo();
 
-    CMD_Printf((uint8_t *)"\n\r\n\r");
-    CMD_Printf((uint8_t *)"Calibration info: \n\r");
-    CMD_Printf((uint8_t *)"\n\r");
-    CMD_Printf((uint8_t *)"FS: %.04f [Hz]\n\r" , calib.sampling_frequency);
+	CMD_Printf((uint8_t *)"\n\r\n\r");
+	CMD_Printf((uint8_t *)"Calibration info: \n\r");
+	CMD_Printf((uint8_t *)"\n\r");
+	CMD_Printf((uint8_t *)"FS: %.04f [Hz]\n\r" , calib.sampling_frequency);
 
-    CMD_Printf((uint8_t *)"\n\rPhase 1:\n\r");
-    CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_r.vrms);
-    CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_r.irms);
-    CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_r.active_power);
-    CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_r.reactive_power);
-    CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_r.apparent_power);
-    CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_r.i_phase_degrees[0]);
-    CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_r.i_phase_degrees[1]);
-    CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_r.i_gain_values[0]);
-    CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_r.i_gain_values[1]);
+	CMD_Printf((uint8_t *)"\n\rPhase 1:\n\r");
+	CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_r.vrms);
+	CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_r.irms);
+	CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_r.active_power);
+	CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_r.reactive_power);
+	CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_r.apparent_power);
+	CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_r.i_phase_degrees[0]);
+	CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_r.i_phase_degrees[1]);
+	CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_r.i_gain_values[0]);
+	CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_r.i_gain_values[1]);
 
-    CMD_Printf((uint8_t *)"\n\rPhase 2:\n\r");
-    CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_y.vrms);
-    CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_y.irms);
-    CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_y.active_power);
-    CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_y.reactive_power);
-    CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_y.apparent_power);
-    CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_y.i_phase_degrees[0]);
-    CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_y.i_phase_degrees[1]);
-    CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_y.i_gain_values[0]);
-    CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_y.i_gain_values[1]);
+	CMD_Printf((uint8_t *)"\n\rPhase 2:\n\r");
+	CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_y.vrms);
+	CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_y.irms);
+	CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_y.active_power);
+	CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_y.reactive_power);
+	CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_y.apparent_power);
+	CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_y.i_phase_degrees[0]);
+	CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_y.i_phase_degrees[1]);
+	CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_y.i_gain_values[0]);
+	CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_y.i_gain_values[1]);
 
-    CMD_Printf((uint8_t *)"\n\rPhase 3:\n\r");
-    CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_b.vrms);
-    CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_b.irms);
-    CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_b.active_power);
-    CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_b.reactive_power);
-    CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_b.apparent_power);
-    CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_b.i_phase_degrees[0]);
-    CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_b.i_phase_degrees[1]);
-    CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_b.i_gain_values[0]);
-    CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_b.i_gain_values[1]);
+	CMD_Printf((uint8_t *)"\n\rPhase 3:\n\r");
+	CMD_Printf((uint8_t *)"V_COEFF: %.04f\n\r" , calib.coeff.phase_b.vrms);
+	CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r" , calib.coeff.phase_b.irms);
+	CMD_Printf((uint8_t *)"ACT1_COEFF: %.04f\n\r" , calib.coeff.phase_b.active_power);
+	CMD_Printf((uint8_t *)"REA1_COEFF: %.04f\n\r" , calib.coeff.phase_b.reactive_power);
+	CMD_Printf((uint8_t *)"APP1_COEFF: %.04f\n\r" , calib.coeff.phase_b.apparent_power);
+	CMD_Printf((uint8_t *)"ANGLE0_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_b.i_phase_degrees[0]);
+	CMD_Printf((uint8_t *)"ANGLE1_1: %.04f [deg]\n\r" , calib.sw_phase_correction.phase_b.i_phase_degrees[1]);
+	CMD_Printf((uint8_t *)"GAIN0_1: %.04f\n\r" , calib.sw_gain.phase_b.i_gain_values[0]);
+	CMD_Printf((uint8_t *)"GAIN1_1: %.04f\n\r" , calib.sw_gain.phase_b.i_gain_values[1]);
 
-    CMD_Printf((uint8_t *)"\n\rNeutral:\n\r");
-    CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r\n\r" , calib.coeff.neutral.irms);
+	CMD_Printf((uint8_t *)"\n\rNeutral:\n\r");
+	CMD_Printf((uint8_t *)"I1_COEFF: %.04f\n\r\n\r" , calib.coeff.neutral.irms);
 
-    return 0;
+	return 0;
 }
 
 /******************************************************************************
@@ -2623,17 +2629,17 @@ static uint8_t COMMAND_InvokeCPULoad(uint8_t *arg_str)
 	uint16_t cpu_speed = 24;
 
 	if(HOCODIV == 0x00)
-    {
+	{
 		cpu_speed = 24;
-    }
-    else if(HOCODIV == 0x01)
-    {
-    	cpu_speed = 12;
-    }
-    else
-    {
-    	cpu_speed = 6;
-    }
+	}
+	else if(HOCODIV == 0x01)
+	{
+		cpu_speed = 12;
+	}
+	else
+	{
+		cpu_speed = 6;
+	}
 
 	LOADTEST_TAU_Init();
 
@@ -2719,6 +2725,67 @@ static uint8_t COMMAND_InvokeVddCheck(uint8_t *arg_str)
 	CMD_Printf((uint8_t*)"\n\rVDD Status: ");
 	CMD_Printf((uint8_t*)R_LVD_range_to_str(R_LVD_Check()));
 	CMD_SendString((uint8_t *)"\n\r");
+
+	return 0;
+}
+
+/******************************************************************************
+ * Function Name   : COMMAND_InvokeInvertPolarity
+ * Interface       : static void COMMAND_InvokeInvertPolarity(uint8_t *arg_str)
+ * Description     : Command Invoke Inver Polarity
+ * Arguments       : uint8_t * arg_str: Arguments string
+ * Function Calls  : None
+ * Return Value    : None
+ ******************************************************************************/
+static uint8_t COMMAND_InvokeInvertPolarity(uint8_t *arg_str)
+{
+	uint8_t channel_to_invert;
+	uint8_t buffer[20];
+
+	CMD_SendString((uint8_t *)"\n\rParameter(s): ");
+	CMD_SendString((uint8_t *)arg_str);
+	CMD_SendString((uint8_t *)"\n\r");
+
+	/* Get Day parameter */
+	arg_str = COMMAND_GetScanOneParam(buffer, 20, arg_str, (uint8_t *)" ", (uint8_t *)" /");
+
+	if (arg_str != NULL &&
+			(buffer[0] >= '0' && buffer[0] <= '9'))
+	{
+		/* get number */
+		channel_to_invert = (uint8_t)atoi((char * __near)buffer);
+
+		if(1 == channel_to_invert)
+		{
+			CMD_SendString((uint8_t *)"Phase 1 inverted!\n\r");
+			phase1_inversion_flag *= -1;
+		}
+		else if(2 == channel_to_invert)
+		{
+			CMD_SendString((uint8_t *)"Phase 2 inverted!\n\r");
+			phase2_inversion_flag *= -1;
+		}
+		else if(3 == channel_to_invert)
+		{
+			CMD_SendString((uint8_t *)"Phase 3 inverted!\n\r");
+			phase3_inversion_flag *= -1;
+		}
+		else if(4 == channel_to_invert)
+		{
+			CMD_SendString((uint8_t *)"Neutral inverted!\n\r");
+			neutral_inversion_flag *= -1;
+		}
+		else
+		{
+			CMD_SendString((uint8_t *)"Parameter error\n\r");
+			return 1;
+		}
+	}
+	else
+	{
+		CMD_SendString((uint8_t *)"Parameter error\n\r");
+		return 1;
+	}
 
 	return 0;
 }

@@ -164,6 +164,15 @@ int16_t * gp_previous_v90_r;
 int16_t * gp_previous_v90_y;
 int16_t * gp_previous_v90_b;
 
+/* phase 1 inversion flag*/
+EM_SW_SAMP_TYPE phase1_inversion_flag = 1;
+/* phase 2 inversion flag*/
+EM_SW_SAMP_TYPE phase2_inversion_flag = 1;
+/* phase 3 inversion flag*/
+EM_SW_SAMP_TYPE phase3_inversion_flag = 1;
+/* neutral inversion flag*/
+EM_SW_SAMP_TYPE neutral_inversion_flag = 1;
+
 /******************************************************************************
  * Function Name    : void EM_ADC_SetGainEnum(EM_LINE line, dsad_gain_t dsad_gain)
  * Description      : Set a suitable gain phase level to a port
@@ -517,6 +526,11 @@ void EM_ADC_InterruptCallback(void)
 
 	/*  Get current samples */
 	EM_ADC_DRIVER_CURRENT_READ_ALL();
+
+    g_wrp_adc_samples.phase_r.i = g_wrp_adc_samples.phase_r.i * phase1_inversion_flag;
+    g_wrp_adc_samples.phase_y.i = g_wrp_adc_samples.phase_y.i * phase2_inversion_flag;
+    g_wrp_adc_samples.phase_b.i = g_wrp_adc_samples.phase_b.i * phase3_inversion_flag;
+    g_wrp_adc_samples.neutral.i = g_wrp_adc_samples.neutral.i * neutral_inversion_flag;
 
 	EM_ADC_DoNoisyBitMasking();
 

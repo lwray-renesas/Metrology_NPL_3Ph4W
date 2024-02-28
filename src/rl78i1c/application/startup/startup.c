@@ -51,7 +51,9 @@ Includes   <System Includes> , "Project Includes"
 #include "debug.h"
 #include "stdio.h"
 #include "storage_em.h"
+#ifndef NO_DISPLAY
 #include "gfx.h"
+#endif
 
 /***********************************************************************************************************************
 Typedef definitions
@@ -367,7 +369,7 @@ uint8_t start_peripheral_and_app(void)
 		DEBUG_Printf((uint8_t *)param_text, code_buffer);
 	}
 
-
+#ifndef NO_DISPLAY
     /** Start the Display*/
     DEBUG_Printf((uint8_t *)param_item_start, 7, "Start Display");
     R_CSI00_Start_app(); /* Enable SPI*/
@@ -388,6 +390,7 @@ uint8_t start_peripheral_and_app(void)
 	Gfx_display_refresh();
 
     DEBUG_Printf((uint8_t *)param_item_end_normal, "OK");
+#endif
 
     /** Start peripherals */
     R_RTC_Start();

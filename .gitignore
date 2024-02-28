@@ -52,3 +52,4 @@ dkms.conf
 /Release_CT/*
 /Debug_CT/
 /Release_CT/
+/Debug_CT_NO_DISPLAY/
